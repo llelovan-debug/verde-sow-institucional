@@ -1,0 +1,2223 @@
+/* ==========================================================================
+   10. APRESENTAÇÃO INSTITUCIONAL
+   ========================================================================== */
+
+.about-intro {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(189, 229, 19, 0.08),
+            transparent 28%
+        ),
+        var(--color-white);
+}
+
+
+/* ==========================================================================
+   11. GRID PRINCIPAL
+   ========================================================================== */
+
+.about-intro__grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: clamp(
+        var(--space-10),
+        7vw,
+        var(--space-14)
+    );
+}
+
+.about-intro__visual,
+.about-intro__content {
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   12. COLUNA VISUAL
+   ========================================================================== */
+
+.about-intro__visual {
+    position: relative;
+
+    min-height: clamp(
+        38rem,
+        48vw,
+        46rem
+    );
+}
+
+
+/* ==========================================================================
+   13. IMAGENS
+   ========================================================================== */
+
+.about-intro__media {
+    position: absolute;
+
+    overflow: hidden;
+
+    background: var(--color-neutral-200);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    box-shadow: var(--shadow-xl);
+}
+
+.about-intro__media--primary {
+    top: 0;
+    right: 0;
+
+    width: 84%;
+    height: 89%;
+
+    border-radius:
+        var(--radius-2xl)
+        var(--radius-xl)
+        var(--radius-2xl)
+        var(--radius-xl);
+}
+
+.about-intro__media--secondary {
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+
+    width: 47%;
+    height: 31%;
+
+    border:
+        0.4rem solid
+        var(--color-white);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow: var(--shadow-xl);
+}
+
+.about-intro__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform var(--transition-slow),
+        filter var(--transition-base);
+}
+
+.about-intro__media:hover
+.about-intro__image,
+.about-intro__media:focus-within
+.about-intro__image {
+    transform: scale(1.045);
+
+    filter:
+        contrast(1.03)
+        saturate(1.04);
+}
+
+
+/* ==========================================================================
+   14. CARTÃO SOBREPOSTO
+   ========================================================================== */
+
+.about-intro__label {
+    position: absolute;
+    right: -1rem;
+    bottom: 7%;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    width: min(18rem, 55%);
+    padding: var(--space-5);
+
+    color: var(--color-white);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 36, 24, 0.97),
+            rgba(38, 77, 55, 0.94)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.14);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow: var(--shadow-xl);
+
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+.about-intro__label-mark {
+    display: grid;
+    place-items: center;
+
+    width: 3rem;
+    height: 3rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    font-size: var(--font-size-200);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: -0.04em;
+}
+
+.about-intro__label > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    min-width: 0;
+}
+
+.about-intro__label strong {
+    color: var(--color-white);
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+}
+
+.about-intro__label div span {
+    color: rgba(255, 255, 255, 0.63);
+
+    font-size: var(--font-size-100);
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   15. CONTEÚDO
+   ========================================================================== */
+
+.about-intro__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-intro__title {
+    max-width: 14ch;
+}
+
+.about-intro__text {
+    display: grid;
+    gap: var(--space-4);
+
+    max-width: 42rem;
+    margin-top: var(--space-6);
+}
+
+.about-intro__text p {
+    color: var(--color-text-muted);
+
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   16. DESTAQUES
+   ========================================================================== */
+
+.about-intro__highlights {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+
+    width: 100%;
+    margin:
+        var(--space-8)
+        0
+        0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.about-intro__highlight {
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+    align-items: flex-start;
+    gap: var(--space-4);
+
+    min-width: 0;
+    padding: var(--space-5);
+
+    background: var(--color-surface-soft);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    border-radius: var(--radius-lg);
+
+    transition:
+        transform var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.about-intro__highlight:hover,
+.about-intro__highlight:focus-within {
+    transform: translateY(-0.3rem);
+
+    background: var(--color-white);
+
+    border-color:
+        rgba(189, 229, 19, 0.48);
+
+    box-shadow: var(--shadow-md);
+}
+
+.about-intro__highlight > span {
+    display: grid;
+    place-items: center;
+
+    width: 2.8rem;
+    height: 2.8rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.about-intro__highlight div {
+    min-width: 0;
+}
+
+.about-intro__highlight strong {
+    display: block;
+
+    margin-bottom: var(--space-2);
+
+    color: var(--color-primary-950);
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+}
+
+.about-intro__highlight p {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-200);
+    line-height: var(--line-height-relaxed);
+
+    text-align: left;
+    hyphens: none;
+}
+
+
+/* ==========================================================================
+   17. BOTÃO
+   ========================================================================== */
+
+.about-intro__actions {
+    margin-top: var(--space-8);
+}
+
+
+/* ==========================================================================
+   18. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .about-intro__grid {
+        gap: var(--space-8);
+    }
+
+    .about-intro__visual {
+        min-height: 34rem;
+    }
+
+    .about-intro__media--primary {
+        width: 87%;
+    }
+
+    .about-intro__media--secondary {
+        width: 49%;
+    }
+
+    .about-intro__label {
+        right: 0;
+
+        width: 58%;
+        padding: var(--space-4);
+    }
+
+    .about-intro__highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   19. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .about-intro__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-10);
+    }
+
+    .about-intro__visual {
+        min-height: clamp(
+            30rem,
+            112vw,
+            40rem
+        );
+    }
+
+    .about-intro__content {
+        align-items: stretch;
+    }
+
+    .about-intro__title,
+    .about-intro__text {
+        max-width: none;
+    }
+
+    .about-intro__text p {
+        text-align: left;
+        hyphens: none;
+    }
+
+    .about-intro__media--primary {
+        width: 89%;
+        height: 84%;
+    }
+
+    .about-intro__media--secondary {
+        width: 49%;
+        height: 28%;
+    }
+
+    .about-intro__label {
+        right: 0;
+        bottom: 4%;
+
+        width: min(17rem, 64%);
+    }
+
+    .about-intro__highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .about-intro__actions .button {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   20. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .about-intro__visual {
+        min-height: 28rem;
+    }
+
+    .about-intro__media--primary {
+        width: 93%;
+
+        border-radius: var(--radius-xl);
+    }
+
+    .about-intro__media--secondary {
+        width: 54%;
+
+        border-width: 0.3rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .about-intro__label {
+        width: 68%;
+        padding: var(--space-4);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .about-intro__label-mark {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .about-intro__label div span {
+        display: none;
+    }
+
+    .about-intro__highlight {
+        padding: var(--space-4);
+    }
+
+    .about-intro__highlight > span {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+
+/* ==========================================================================
+   21. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .about-intro__media:hover
+    .about-intro__image,
+    .about-intro__highlight:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   22. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-intro__image,
+    .about-intro__highlight {
+        transition: none;
+    }
+
+    .about-intro__media:hover
+    .about-intro__image,
+    .about-intro__highlight:hover,
+    .about-intro__highlight:focus-within {
+        transform: none;
+    }
+}
+/* ==========================================================================
+   23. MISSÃO, VISÃO E VALORES
+   ========================================================================== */
+
+.about-pillars {
+    position: relative;
+    isolation: isolate;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background:
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(189, 229, 19, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 8% 90%,
+            rgba(117, 90, 243, 0.06),
+            transparent 28%
+        ),
+        var(--color-primary-950);
+}
+
+
+/* Textura discreta */
+
+.about-pillars::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    opacity: 0.07;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px
+        );
+
+    background-size: 4rem 4rem;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.72),
+            transparent 92%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   24. CABEÇALHO
+   ========================================================================== */
+.about-pillars .section-heading {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 70rem;
+    margin: 0 auto var(--space-10);
+}
+
+.about-pillars .section-eyebrow {
+    align-self: flex-start;
+
+    margin-bottom: var(--space-4);
+
+    color: var(--color-accent-500);
+}
+
+.about-pillars .section-title {
+    width: 100%;
+    max-width: none;
+
+    color: var(--color-white);
+
+    text-align: center;
+    text-wrap: balance;
+}
+
+.about-pillars .section-description {
+    max-width: 48rem;
+
+    margin: var(--space-5) auto 0;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    text-align: center;
+}
+/* ==========================================================================
+   25. GRID
+   ========================================================================== */
+
+.about-pillars__grid {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+}
+
+
+/* ==========================================================================
+   26. CARD BASE
+   ========================================================================== */
+
+.about-pillar {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 29rem;
+    padding: var(--space-7);
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.11);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow:
+        0 1.25rem 3rem
+        rgba(0, 0, 0, 0.14);
+
+    backdrop-filter: blur(0.85rem);
+    -webkit-backdrop-filter: blur(0.85rem);
+
+    transition:
+        transform var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.about-pillar::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: 0.2rem;
+
+    background: var(--color-accent-500);
+
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        opacity var(--transition-base),
+        transform var(--transition-base);
+}
+
+.about-pillar::after {
+    content: "";
+
+    position: absolute;
+    right: -5rem;
+    bottom: -6rem;
+    z-index: -1;
+
+    width: 14rem;
+    height: 14rem;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(189, 229, 19, 0.14),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    transition:
+        transform var(--transition-slow);
+}
+
+.about-pillar:hover,
+.about-pillar:focus-within {
+    transform: translateY(-0.5rem);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.11),
+            rgba(255, 255, 255, 0.055)
+        );
+
+    border-color:
+        rgba(189, 229, 19, 0.45);
+
+    box-shadow:
+        0 1.75rem 4rem
+        rgba(0, 0, 0, 0.2);
+}
+
+.about-pillar:hover::before,
+.about-pillar:focus-within::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.about-pillar:hover::after,
+.about-pillar:focus-within::after {
+    transform: scale(1.16);
+}
+
+
+/* ==========================================================================
+   27. NÚMERO
+   ========================================================================== */
+
+.about-pillar__number {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-6);
+
+    color: rgba(255, 255, 255, 0.18);
+
+    font-size: var(--font-size-200);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-wider);
+}
+
+
+/* ==========================================================================
+   28. ÍCONE
+   ========================================================================== */
+
+.about-pillar__icon {
+    display: grid;
+    place-items: center;
+
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: var(--space-8);
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0.8rem 1.8rem
+        rgba(189, 229, 19, 0.2);
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.about-pillar__icon svg {
+    width: 1.7rem;
+    height: 1.7rem;
+
+    fill: none;
+    stroke: currentColor;
+}
+
+.about-pillar:hover
+.about-pillar__icon,
+.about-pillar:focus-within
+.about-pillar__icon {
+    color: var(--color-accent-500);
+    background: var(--color-primary-950);
+
+    transform:
+        rotate(4deg)
+        scale(1.05);
+
+    box-shadow:
+        0 1rem 2rem
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* ==========================================================================
+   29. CONTEÚDO
+   ========================================================================== */
+
+.about-pillar__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.about-pillar__content h3 {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-white);
+
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.about-pillar__content p {
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: var(--font-size-300);
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   30. LISTA DE VALORES
+   ========================================================================== */
+
+.about-pillar__list {
+    display: grid;
+    gap: var(--space-3);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.about-pillar__list li {
+    position: relative;
+
+    padding-left: var(--space-5);
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: var(--font-size-300);
+    line-height: var(--line-height-relaxed);
+}
+
+.about-pillar__list li::before {
+    content: "";
+
+    position: absolute;
+    top: 0.68em;
+    left: 0;
+
+    width: 0.42rem;
+    height: 0.42rem;
+
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(189, 229, 19, 0.1);
+}
+
+
+/* ==========================================================================
+   31. CARD EM DESTAQUE
+   ========================================================================== */
+
+.about-pillar--featured {
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(189, 229, 19, 0.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(189, 229, 19, 0.1),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border-color:
+        rgba(189, 229, 19, 0.38);
+}
+
+.about-pillar--featured::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+
+/* ==========================================================================
+   32. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .about-pillars .section-heading {
+        margin-bottom: var(--space-8);
+    }
+
+    .about-pillars__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-5);
+    }
+
+    .about-pillar {
+        min-height: auto;
+    }
+}
+
+
+/* ==========================================================================
+   33. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .about-pillars .section-title,
+    .about-pillars .section-description {
+        max-width: none;
+    }
+
+    .about-pillar {
+        padding: var(--space-6);
+    }
+
+    .about-pillar__content p {
+        text-align: left;
+        hyphens: none;
+    }
+}
+
+
+/* ==========================================================================
+   34. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .about-pillar {
+        padding: var(--space-5);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .about-pillar__icon {
+        width: 3.5rem;
+        height: 3.5rem;
+
+        margin-bottom: var(--space-6);
+    }
+
+    .about-pillar__icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .about-pillar__content h3 {
+        font-size: var(--font-size-600);
+    }
+
+    .about-pillar__number {
+        top: var(--space-4);
+        right: var(--space-5);
+    }
+}
+
+
+/* ==========================================================================
+   35. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .about-pillar:hover,
+    .about-pillar:hover
+    .about-pillar__icon {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   36. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-pillar,
+    .about-pillar::before,
+    .about-pillar::after,
+    .about-pillar__icon {
+        transition: none;
+    }
+
+    .about-pillar:hover,
+    .about-pillar:focus-within,
+    .about-pillar:hover
+    .about-pillar__icon,
+    .about-pillar:focus-within
+    .about-pillar__icon {
+        transform: none;
+    }
+}
+
+/* ==========================================================================
+   37. O QUE NOS DIFERENCIA
+   ========================================================================== */
+
+.about-differences {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(189, 229, 19, 0.08),
+            transparent 28%
+        ),
+        var(--color-cream);
+}
+
+
+/* ==========================================================================
+   38. CABEÇALHO
+   ========================================================================== */
+
+.about-differences .section-heading {
+    margin-bottom: var(--space-10);
+}
+
+.about-differences .section-title {
+    max-width: 16ch;
+}
+
+.about-differences .section-description {
+    max-width: 38rem;
+}
+
+
+/* ==========================================================================
+   39. GRID
+   ========================================================================== */
+
+.about-differences__grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+}
+
+
+/* ==========================================================================
+   40. CARD
+   ========================================================================== */
+
+.about-difference {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 21rem;
+    padding: var(--space-7);
+
+    overflow: hidden;
+
+    background: var(--color-white);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base),
+        background-color var(--transition-base);
+}
+
+.about-difference::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: 0.2rem;
+
+    background: var(--color-accent-500);
+
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        opacity var(--transition-base),
+        transform var(--transition-base);
+}
+
+.about-difference::after {
+    content: "";
+
+    position: absolute;
+    right: -5rem;
+    bottom: -6rem;
+    z-index: -1;
+
+    width: 13rem;
+    height: 13rem;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(189, 229, 19, 0.15),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    transition:
+        transform var(--transition-slow);
+}
+
+.about-difference:hover,
+.about-difference:focus-within {
+    transform: translateY(-0.45rem);
+
+    background: var(--color-surface-soft);
+
+    border-color:
+        rgba(189, 229, 19, 0.52);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.about-difference:hover::before,
+.about-difference:focus-within::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.about-difference:hover::after,
+.about-difference:focus-within::after {
+    transform: scale(1.16);
+}
+
+
+/* ==========================================================================
+   41. NÚMERO
+   ========================================================================== */
+
+.about-difference__number {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-6);
+
+    color:
+        rgba(38, 77, 55, 0.16);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-wider);
+}
+
+
+/* ==========================================================================
+   42. ÍCONE
+   ========================================================================== */
+
+.about-difference__icon {
+    display: grid;
+    place-items: center;
+
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: var(--space-7);
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0.8rem 1.8rem
+        rgba(189, 229, 19, 0.2);
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.about-difference__icon svg {
+    width: 1.7rem;
+    height: 1.7rem;
+
+    fill: none;
+    stroke: currentColor;
+}
+
+.about-difference:hover
+.about-difference__icon,
+.about-difference:focus-within
+.about-difference__icon {
+    color: var(--color-accent-500);
+    background: var(--color-primary-950);
+
+    transform:
+        rotate(4deg)
+        scale(1.05);
+
+    box-shadow:
+        0 1rem 2rem
+        rgba(38, 77, 55, 0.18);
+}
+
+
+/* ==========================================================================
+   43. TÍTULO
+   ========================================================================== */
+
+.about-difference h3 {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-primary-950);
+
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-600);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+
+/* ==========================================================================
+   44. TEXTO
+   ========================================================================== */
+
+.about-difference p {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-300);
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   45. CARD EM DESTAQUE
+   ========================================================================== */
+
+.about-difference--featured {
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(189, 229, 19, 0.17),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(189, 229, 19, 0.1),
+            var(--color-white)
+        );
+
+    border-color:
+        rgba(189, 229, 19, 0.42);
+}
+
+.about-difference--featured::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+
+/* ==========================================================================
+   46. LAPTOP
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .about-differences__grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: var(--space-6);
+    }
+
+    .about-difference {
+        min-height: 19rem;
+    }
+}
+
+
+/* ==========================================================================
+   47. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .about-differences .section-heading {
+        margin-bottom: var(--space-8);
+    }
+
+    .about-differences .section-title {
+        max-width: 18ch;
+    }
+}
+
+
+/* ==========================================================================
+   48. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .about-differences__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-5);
+    }
+
+    .about-difference {
+        min-height: auto;
+        padding: var(--space-6);
+    }
+
+    .about-difference p {
+        text-align: left;
+        hyphens: none;
+    }
+}
+
+
+/* ==========================================================================
+   49. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .about-difference {
+        padding: var(--space-5);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .about-difference__icon {
+        width: 3.5rem;
+        height: 3.5rem;
+
+        margin-bottom: var(--space-6);
+    }
+
+    .about-difference__icon svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .about-difference h3 {
+        font-size: var(--font-size-500);
+    }
+
+    .about-difference__number {
+        top: var(--space-4);
+        right: var(--space-5);
+    }
+}
+
+
+/* ==========================================================================
+   50. SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .about-difference:hover,
+    .about-difference:hover
+    .about-difference__icon {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   51. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-difference,
+    .about-difference::before,
+    .about-difference::after,
+    .about-difference__icon {
+        transition: none;
+    }
+
+    .about-difference:hover,
+    .about-difference:focus-within,
+    .about-difference:hover
+    .about-difference__icon,
+    .about-difference:focus-within
+    .about-difference__icon {
+        transform: none;
+    }
+}
+/* ==========================================================================
+   52. OPERAÇÃO INTEGRADA
+   ========================================================================== */
+
+.about-integrated {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(189, 229, 19, 0.08),
+            transparent 30%
+        ),
+        var(--color-white);
+}
+
+
+/* ==========================================================================
+   53. GRID PRINCIPAL
+   ========================================================================== */
+
+.about-integrated__grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(
+        var(--space-10),
+        7vw,
+        var(--space-14)
+    );
+}
+
+.about-integrated__content,
+.about-integrated__visual {
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   54. CONTEÚDO
+   ========================================================================== */
+
+.about-integrated__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-integrated__title {
+    max-width: 15ch;
+}
+
+.about-integrated__text {
+    display: grid;
+    gap: var(--space-4);
+
+    max-width: 44rem;
+    margin-top: var(--space-6);
+}
+
+.about-integrated__text p {
+    color: var(--color-text-muted);
+
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   55. ETAPAS
+   ========================================================================== */
+
+.about-integrated__steps {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+
+    width: 100%;
+    margin:
+        var(--space-8)
+        0
+        0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.about-integrated__step {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+    align-items: flex-start;
+    gap: var(--space-4);
+
+    min-width: 0;
+    padding: var(--space-5);
+
+    background: var(--color-surface-soft);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    border-radius: var(--radius-lg);
+
+    transition:
+        transform var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.about-integrated__step:hover,
+.about-integrated__step:focus-within {
+    transform: translateY(-0.3rem);
+
+    background: var(--color-white);
+
+    border-color:
+        rgba(189, 229, 19, 0.5);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================================================
+   56. NÚMERO DA ETAPA
+   ========================================================================== */
+
+.about-integrated__step-number {
+    display: grid;
+    place-items: center;
+
+    width: 2.85rem;
+    height: 2.85rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+
+/* ==========================================================================
+   57. CONTEÚDO DA ETAPA
+   ========================================================================== */
+
+.about-integrated__step > div {
+    min-width: 0;
+}
+
+.about-integrated__step h3 {
+    margin-bottom: var(--space-2);
+
+    color: var(--color-primary-950);
+
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-400);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+.about-integrated__step p {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-200);
+    line-height: var(--line-height-relaxed);
+
+    text-align: left;
+    hyphens: none;
+}
+
+
+/* ==========================================================================
+   58. AÇÕES
+   ========================================================================== */
+
+.about-integrated__actions {
+    margin-top: var(--space-8);
+}
+
+
+/* ==========================================================================
+   59. COLUNA VISUAL
+   ========================================================================== */
+
+.about-integrated__visual {
+    position: relative;
+
+    min-height: clamp(
+        36rem,
+        46vw,
+        44rem
+    );
+}
+
+
+/* ==========================================================================
+   60. IMAGEM
+   ========================================================================== */
+
+.about-integrated__media {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    background: var(--color-neutral-200);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    border-radius: var(--radius-2xl);
+
+    box-shadow: var(--shadow-xl);
+}
+
+.about-integrated__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform var(--transition-slow),
+        filter var(--transition-base);
+}
+
+.about-integrated__media:hover
+.about-integrated__image,
+.about-integrated__media:focus-within
+.about-integrated__image {
+    transform: scale(1.045);
+
+    filter:
+        contrast(1.03)
+        saturate(1.04);
+}
+
+
+/* ==========================================================================
+   61. CARTÃO SOBREPOSTO
+   ========================================================================== */
+
+.about-integrated__card {
+    position: absolute;
+    left: -2rem;
+    bottom: 2rem;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+
+    width: min(20rem, 72%);
+    padding: var(--space-5);
+
+    color: var(--color-white);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 36, 24, 0.97),
+            rgba(38, 77, 55, 0.94)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.14);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow: var(--shadow-xl);
+
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+.about-integrated__card-icon {
+    display: grid;
+    place-items: center;
+
+    width: 3.3rem;
+    height: 3.3rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+}
+
+.about-integrated__card-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    fill: none;
+    stroke: currentColor;
+}
+
+.about-integrated__card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    min-width: 0;
+}
+
+.about-integrated__card strong {
+    color: var(--color-white);
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+}
+
+.about-integrated__card div span {
+    color: rgba(255, 255, 255, 0.64);
+
+    font-size: var(--font-size-100);
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   62. DECORAÇÕES
+   ========================================================================== */
+
+.about-integrated__decoration {
+    position: absolute;
+
+    pointer-events: none;
+}
+
+.about-integrated__decoration--accent {
+    top: 8%;
+    right: -1rem;
+
+    width: 1rem;
+    height: 1rem;
+
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+}
+
+.about-integrated__decoration--outline {
+    top: -2rem;
+    left: -2rem;
+
+    width: 8rem;
+    height: 8rem;
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.12);
+
+    border-radius: 50%;
+}
+
+
+/* ==========================================================================
+   63. LAPTOP
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .about-integrated__grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        gap: var(--space-8);
+    }
+
+    .about-integrated__steps {
+        grid-template-columns: 1fr;
+    }
+
+    .about-integrated__visual {
+        min-height: 36rem;
+    }
+
+    .about-integrated__card {
+        left: 1rem;
+    }
+}
+
+
+/* ==========================================================================
+   64. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .about-integrated__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-10);
+    }
+
+    .about-integrated__title,
+    .about-integrated__text {
+        max-width: none;
+    }
+
+    .about-integrated__steps {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .about-integrated__visual {
+        min-height: 34rem;
+    }
+}
+
+
+/* ==========================================================================
+   65. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .about-integrated__content {
+        align-items: stretch;
+    }
+
+    .about-integrated__text p {
+        text-align: left;
+        hyphens: none;
+    }
+
+    .about-integrated__steps {
+        grid-template-columns: 1fr;
+    }
+
+    .about-integrated__step {
+        padding: var(--space-4);
+    }
+
+    .about-integrated__actions .button {
+        width: 100%;
+    }
+
+    .about-integrated__visual {
+        min-height: clamp(
+            28rem,
+            100vw,
+            36rem
+        );
+    }
+
+    .about-integrated__card {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+
+        width: auto;
+    }
+
+    .about-integrated__decoration--outline {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   66. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .about-integrated__visual {
+        min-height: 25rem;
+    }
+
+    .about-integrated__media {
+        border-radius: var(--radius-xl);
+    }
+
+    .about-integrated__card {
+        padding: var(--space-4);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .about-integrated__card-icon {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .about-integrated__card div span {
+        display: none;
+    }
+
+    .about-integrated__step-number {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+
+/* ==========================================================================
+   67. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .about-integrated__media:hover
+    .about-integrated__image,
+    .about-integrated__step:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   68. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-integrated__image,
+    .about-integrated__step {
+        transition: none;
+    }
+
+    .about-integrated__media:hover
+    .about-integrated__image,
+    .about-integrated__media:focus-within
+    .about-integrated__image,
+    .about-integrated__step:hover,
+    .about-integrated__step:focus-within {
+        transform: none;
+    }
+}
+/* ==========================================================================
+   69. CTA - PARCERIAS
+   ========================================================================== */
+
+.about-partnerships {
+    position: relative;
+    overflow: hidden;
+
+    color: var(--color-white);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary-950),
+            var(--color-primary-900)
+        );
+}
+
+
+/* ==========================================================================
+   70. CONTAINER
+   ========================================================================== */
+
+.about-partnerships__box {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-10);
+
+    padding:
+        clamp(3rem, 5vw, 5rem);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.02)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: var(--radius-2xl);
+
+    box-shadow: var(--shadow-xl);
+}
+
+
+/* ==========================================================================
+   71. CONTEÚDO
+   ========================================================================== */
+
+.about-partnerships__content {
+    max-width: 42rem;
+}
+
+.about-partnerships__eyebrow {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-accent-500);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.about-partnerships__title {
+    margin-bottom: var(--space-5);
+
+    color: var(--color-white);
+
+    font-family: var(--font-family-heading);
+    font-size: clamp(2.4rem,4vw,4rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.1;
+    letter-spacing: -.04em;
+}
+
+.about-partnerships__description {
+    color: rgba(255,255,255,.72);
+
+    font-size: var(--font-size-300);
+    line-height: 1.8;
+
+    text-wrap: pretty;
+}
+
+
+/* ==========================================================================
+   72. BOTÕES
+   ========================================================================== */
+
+.about-partnerships__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   73. DECORAÇÕES
+   ========================================================================== */
+
+.about-partnerships__decoration {
+    position: absolute;
+    z-index: -1;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.about-partnerships__decoration--one {
+    top: -8rem;
+    right: -8rem;
+
+    width: 18rem;
+    height: 18rem;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(189,229,19,.16),
+            transparent 70%
+        );
+}
+
+.about-partnerships__decoration--two {
+    bottom: -10rem;
+    left: -8rem;
+
+    width: 20rem;
+    height: 20rem;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(117,90,243,.10),
+            transparent 70%
+        );
+}
+
+
+/* ==========================================================================
+   74. RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 992px) {
+
+    .about-partnerships__box{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-partnerships__content{
+        max-width: none;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .about-partnerships__box{
+
+        padding:
+            var(--space-8);
+
+        border-radius: var(--radius-xl);
+    }
+
+    .about-partnerships__actions{
+
+        width:100%;
+
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .about-partnerships__actions .button{
+        width:100%;
+        justify-content:center;
+    }
+
+    .about-partnerships__title{
+        font-size:2.4rem;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce){
+
+    .about-partnerships__box,
+    .about-partnerships__decoration{
+        transition:none;
+    }
+
+}

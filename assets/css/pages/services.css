@@ -1,0 +1,2203 @@
+/* ==========================================================================
+   SERVIÇOS — VERDE SOW
+   Ficheiro: assets/css/pages/services.css
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. CONFIGURAÇÕES DA PÁGINA
+   ========================================================================== */
+
+.services-page {
+    overflow-x: hidden;
+
+    color: var(--color-text);
+    background: var(--color-white);
+}
+
+.services-page .site-main {
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   02. NAVBAR SOBRE O BANNER
+   ========================================================================== */
+
+.services-page .site-header:not(.is-scrolled) {
+    color: var(--color-white);
+    background: transparent;
+
+    border-bottom-color:
+        rgba(255, 255, 255, 0.12);
+}
+
+.services-page
+.site-header:not(.is-scrolled)
+.site-logo__image--primary {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.services-page
+.site-header:not(.is-scrolled)
+.site-logo__image--light {
+    opacity: 1;
+    visibility: visible;
+}
+
+.services-page
+.site-header:not(.is-scrolled)
+.desktop-navigation__link {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.services-page
+.site-header:not(.is-scrolled)
+.desktop-navigation__link:hover,
+.services-page
+.site-header:not(.is-scrolled)
+.desktop-navigation__link:focus-visible,
+.services-page
+.site-header:not(.is-scrolled)
+.desktop-navigation__link.is-active,
+.services-page
+.site-header:not(.is-scrolled)
+.desktop-navigation__link[aria-current="page"] {
+    color: var(--color-white);
+}
+
+
+/* ==========================================================================
+   03. HERO — SERVIÇOS
+   ========================================================================== */
+
+.services-hero {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+
+    min-height: clamp(47rem, 100vh, 61rem);
+    padding-top:
+        calc(
+            var(--header-height-desktop)
+            + var(--space-8)
+        );
+    padding-bottom: var(--space-10);
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background:
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(189, 229, 19, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 8% 92%,
+            rgba(117, 90, 243, 0.08),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #071b12 0%,
+            var(--color-primary-950) 50%,
+            var(--color-primary-900) 100%
+        );
+}
+
+.services-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    opacity: 0.06;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px
+        );
+
+    background-size: 4rem 4rem;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.7),
+            transparent 95%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   04. GRID
+   ========================================================================== */
+
+.services-hero__grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 0.9fr);
+    align-items: center;
+    gap: clamp(
+        var(--space-10),
+        6vw,
+        var(--space-14)
+    );
+}
+
+.services-hero__content,
+.services-hero__visual {
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   05. CONTEÚDO
+   ========================================================================== */
+
+.services-hero__content {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    max-width: 52rem;
+}
+
+.services-hero__breadcrumbs {
+    margin-bottom: var(--space-7);
+}
+
+.services-hero__breadcrumbs .breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.services-hero__breadcrumbs li,
+.services-hero__breadcrumbs a {
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: var(--font-size-200);
+    line-height: 1.4;
+}
+
+.services-hero__breadcrumbs a {
+    transition: color var(--transition-base);
+}
+
+.services-hero__breadcrumbs a:hover,
+.services-hero__breadcrumbs a:focus-visible {
+    color: var(--color-accent-500);
+}
+
+.services-hero__breadcrumbs li[aria-current="page"] {
+    color: var(--color-white);
+}
+
+.services-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-5);
+
+    color: var(--color-accent-500);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+}
+
+.services-hero__eyebrow::before {
+    content: "";
+
+    width: 2rem;
+    height: 1px;
+
+    background: currentColor;
+}
+
+.services-hero__title {
+    max-width: 11ch;
+    margin: 0;
+
+    color: var(--color-white);
+
+    font-family: var(--font-family-heading);
+    font-size: clamp(
+        3.7rem,
+        6.2vw,
+        6.5rem
+    );
+    font-weight: var(--font-weight-extrabold);
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+
+    text-wrap: balance;
+}
+
+.services-hero__description {
+    max-width: 43rem;
+    margin-top: var(--space-6);
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: clamp(
+        var(--font-size-300),
+        1.35vw,
+        var(--font-size-500)
+    );
+    line-height: var(--line-height-readable);
+
+    text-align: left;
+    text-wrap: pretty;
+}
+
+
+/* ==========================================================================
+   06. BOTÕES
+   ========================================================================== */
+
+.services-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+
+    margin-top: var(--space-8);
+}
+
+
+/* ==========================================================================
+   07. INDICADORES
+   ========================================================================== */
+
+.services-hero__indicators {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+
+    width: 100%;
+    max-width: 42rem;
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+.services-hero__indicator {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+
+    min-width: 0;
+}
+
+.services-hero__indicator strong {
+    color: var(--color-white);
+
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-700);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.services-hero__indicator span {
+    color: rgba(255, 255, 255, 0.54);
+
+    font-size: var(--font-size-100);
+    line-height: 1.45;
+}
+
+
+/* ==========================================================================
+   08. COLUNA VISUAL
+   ========================================================================== */
+
+.services-hero__visual {
+    position: relative;
+
+    min-height: clamp(37rem, 48vw, 48rem);
+}
+
+.services-hero__media {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.13);
+
+    border-radius:
+        var(--radius-2xl)
+        var(--radius-xl)
+        var(--radius-2xl)
+        var(--radius-xl);
+
+    box-shadow:
+        0 2rem 5rem
+        rgba(0, 0, 0, 0.27);
+}
+
+.services-hero__media::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(7, 27, 18, 0.36),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+.services-hero__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    animation:
+        servicesHeroImageMovement
+        14s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes servicesHeroImageMovement {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.045);
+    }
+}
+
+
+/* ==========================================================================
+   09. CARTÃO SOBREPOSTO
+   ========================================================================== */
+
+.services-hero__card {
+    position: absolute;
+    left: -2rem;
+    bottom: 2rem;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+
+    width: min(20rem, 75%);
+    padding: var(--space-5);
+
+    color: var(--color-primary-950);
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.5);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow:
+        0 1.5rem 3rem
+        rgba(0, 0, 0, 0.23);
+
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+.services-hero__card-icon {
+    display: grid;
+    place-items: center;
+
+    width: 3.4rem;
+    height: 3.4rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+}
+
+.services-hero__card-icon svg {
+    width: 1.55rem;
+    height: 1.55rem;
+}
+
+.services-hero__card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    min-width: 0;
+}
+
+.services-hero__card strong {
+    color: var(--color-primary-950);
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+}
+
+.services-hero__card div span {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-100);
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   10. DECORAÇÕES
+   ========================================================================== */
+
+.services-hero__decoration {
+    position: absolute;
+
+    pointer-events: none;
+}
+
+.services-hero__decoration--accent {
+    top: 10%;
+    right: -1rem;
+    z-index: 3;
+
+    width: 1rem;
+    height: 1rem;
+
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 0.55rem
+        rgba(189, 229, 19, 0.09);
+}
+
+.services-hero__decoration--outline {
+    top: -2.5rem;
+    left: -2.5rem;
+
+    width: 9rem;
+    height: 9rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+}
+
+
+/* ==========================================================================
+   11. INDICADOR DE SCROLL
+   ========================================================================== */
+
+.services-hero__scroll {
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 4rem);
+    bottom: var(--space-7);
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+
+    transition: color var(--transition-base);
+}
+
+.services-hero__scroll:hover,
+.services-hero__scroll:focus-visible {
+    color: var(--color-accent-500);
+}
+
+.services-hero__scroll > span:last-child {
+    position: relative;
+
+    width: 1px;
+    height: 3rem;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.22);
+}
+
+.services-hero__scroll > span:last-child::after {
+    content: "";
+
+    position: absolute;
+    top: -60%;
+    left: 0;
+
+    width: 100%;
+    height: 55%;
+
+    background: var(--color-accent-500);
+
+    animation:
+        servicesHeroScroll
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+@keyframes servicesHeroScroll {
+    0% {
+        top: -60%;
+    }
+
+    65%,
+    100% {
+        top: 110%;
+    }
+}
+
+
+/* ==========================================================================
+   12. LAPTOP
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .services-hero__grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        gap: var(--space-8);
+    }
+
+    .services-hero__title {
+        font-size: clamp(
+            3.3rem,
+            5.7vw,
+            5.3rem
+        );
+    }
+
+    .services-hero__visual {
+        min-height: 38rem;
+    }
+
+    .services-hero__card {
+        left: 1rem;
+    }
+}
+
+
+/* ==========================================================================
+   13. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .services-hero {
+        padding-top:
+            calc(
+                var(--header-height-tablet)
+                + var(--space-10)
+            );
+        padding-bottom: var(--space-12);
+    }
+
+    .services-hero__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-10);
+    }
+
+    .services-hero__content {
+        max-width: 48rem;
+    }
+
+    .services-hero__title {
+        max-width: 12ch;
+    }
+
+    .services-hero__visual {
+        min-height: 36rem;
+    }
+
+    .services-hero__decoration--outline {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   14. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .services-hero {
+        min-height: auto;
+
+        padding-top:
+            calc(
+                var(--header-height-mobile)
+                + var(--space-10)
+            );
+        padding-bottom: var(--space-10);
+    }
+
+    .services-hero__breadcrumbs {
+        margin-bottom: var(--space-6);
+    }
+
+    .services-hero__title {
+        max-width: 12ch;
+
+        font-size: clamp(
+            2.8rem,
+            13vw,
+            4.4rem
+        );
+    }
+
+    .services-hero__description {
+        max-width: none;
+    }
+
+    .services-hero__actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .services-hero__actions .button {
+        width: 100%;
+    }
+
+    .services-hero__indicators {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-4);
+        margin-top: var(--space-8);
+    }
+
+    .services-hero__indicator {
+        display: grid;
+        grid-template-columns:
+            4.5rem
+            minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .services-hero__visual {
+        min-height: clamp(
+            29rem,
+            112vw,
+            38rem
+        );
+    }
+
+    .services-hero__card {
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+
+        width: auto;
+    }
+
+    .services-hero__scroll {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   15. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .services-hero__visual {
+        min-height: 26rem;
+    }
+
+    .services-hero__media {
+        border-radius: var(--radius-xl);
+    }
+
+    .services-hero__card {
+        padding: var(--space-4);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .services-hero__card-icon {
+        width: 2.9rem;
+        height: 2.9rem;
+    }
+
+    .services-hero__card div span {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   16. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .services-hero__image,
+    .services-hero__scroll
+    > span:last-child::after {
+        animation: none;
+    }
+}
+
+/* ==========================================================================
+   14. O QUE FAZEMOS
+   ========================================================================== */
+
+.services-intro {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(189, 229, 19, 0.08),
+            transparent 28%
+        ),
+        var(--color-white);
+}
+
+
+/* ==========================================================================
+   15. GRID PRINCIPAL
+   ========================================================================== */
+
+.services-intro__grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 0.9fr);
+    align-items: end;
+    gap: clamp(
+        var(--space-8),
+        7vw,
+        var(--space-14)
+    );
+}
+
+.services-intro__content,
+.services-intro__description {
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   16. CONTEÚDO
+   ========================================================================== */
+
+.services-intro__title {
+    max-width: 14ch;
+}
+
+.services-intro__description {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.services-intro__description p {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-300);
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   17. NAVEGAÇÃO RÁPIDA
+   ========================================================================== */
+
+.services-intro__navigation {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+
+    margin-top: var(--space-10);
+}
+
+
+/* ==========================================================================
+   18. LINK DE SERVIÇO
+   ========================================================================== */
+/* ==========================================================================
+   HOVER SUAVE — LINKS DOS SERVIÇOS
+   ========================================================================== */
+
+.services-intro__link {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    align-items: center;
+    gap: var(--space-4);
+
+    min-width: 0;
+    min-height: 7rem;
+    padding: var(--space-5);
+
+    color: var(--color-primary-950);
+    background-color: var(--color-surface-soft);
+
+    border:
+        1px solid
+        rgba(38, 77, 55, 0.1);
+
+    border-radius: var(--radius-xl);
+
+    box-shadow:
+        0 0.4rem 1.2rem
+        rgba(38, 77, 55, 0.05);
+
+    overflow: hidden;
+
+    transform: translateY(0);
+
+    transition:
+        color 0.45s ease,
+        background-color 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Fundo animado */
+
+.services-intro__link::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary-950),
+            var(--color-primary-800)
+        );
+
+    opacity: 0;
+
+    transform: scaleY(0.92);
+    transform-origin: bottom;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+}
+
+
+/* Linha superior */
+
+.services-intro__link::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+
+    height: 0.2rem;
+
+    background: var(--color-accent-500);
+
+    opacity: 0;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Mantém o conteúdo acima do fundo */
+
+.services-intro__link > span,
+.services-intro__link > strong,
+.services-intro__link > svg {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Estado hover */
+
+.services-intro__link:hover,
+.services-intro__link:focus-visible {
+    color: var(--color-white);
+
+    border-color:
+        rgba(189, 229, 19, 0.38);
+
+    box-shadow:
+        0 1.1rem 2.4rem
+        rgba(21, 55, 39, 0.16);
+
+    transform: translateY(-0.3rem);
+}
+
+.services-intro__link:hover::after,
+.services-intro__link:focus-visible::after {
+    opacity: 1;
+
+    transform: scaleY(1);
+}
+
+.services-intro__link:hover::before,
+.services-intro__link:focus-visible::before {
+    opacity: 1;
+
+    transform: scaleX(1);
+}
+
+
+/* Número */
+
+.services-intro__link > span {
+    color: var(--color-primary-700);
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s ease;
+}
+
+.services-intro__link:hover > span,
+.services-intro__link:focus-visible > span {
+    color: var(--color-accent-500);
+
+    transform: translateX(0.1rem);
+}
+
+
+/* Título */
+
+.services-intro__link > strong {
+    transition:
+        color 0.4s ease,
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services-intro__link:hover > strong,
+.services-intro__link:focus-visible > strong {
+    transform: translateX(0.12rem);
+}
+
+
+/* Seta */
+
+.services-intro__link > svg {
+    color: var(--color-primary-700);
+
+    transition:
+        color 0.4s ease,
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services-intro__link:hover > svg,
+.services-intro__link:focus-visible > svg {
+    color: var(--color-accent-500);
+
+    transform: translateX(0.35rem);
+}
+/* ==========================================================================
+   19. NÚMERO
+   ========================================================================== */
+
+.services-intro__link > span {
+    color: var(--color-primary-700);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-wider);
+
+    transition:
+        color var(--transition-base);
+}
+
+.services-intro__link:hover > span,
+.services-intro__link:focus-visible > span {
+    color: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   20. TÍTULO DO LINK
+   ========================================================================== */
+
+.services-intro__link strong {
+    min-width: 0;
+
+    color: inherit;
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.35;
+}
+
+
+/* ==========================================================================
+   21. SETA
+   ========================================================================== */
+
+.services-intro__link svg {
+    width: 1.15rem;
+    height: 1.15rem;
+
+    flex-shrink: 0;
+
+    color: var(--color-primary-700);
+
+    transition:
+        color var(--transition-base),
+        transform var(--transition-base);
+}
+
+.services-intro__link:hover svg,
+.services-intro__link:focus-visible svg {
+    color: var(--color-accent-500);
+
+    transform: translateX(0.25rem);
+}
+
+
+/* ==========================================================================
+   22. LAPTOP
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .services-intro__navigation {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ==========================================================================
+   23. TABLET
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .services-intro__grid {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-6);
+    }
+
+    .services-intro__title,
+    .services-intro__description {
+        max-width: none;
+    }
+}
+
+
+/* ==========================================================================
+   24. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .services-intro__description p {
+        text-align: left;
+        hyphens: none;
+    }
+
+    .services-intro__navigation {
+        grid-template-columns: 1fr;
+
+        gap: var(--space-4);
+        margin-top: var(--space-8);
+    }
+
+    .services-intro__link {
+        min-height: 5.5rem;
+    }
+}
+
+
+/* ==========================================================================
+   25. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .services-intro__link {
+        gap: var(--space-3);
+
+        min-height: 5rem;
+        padding: var(--space-4);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .services-intro__link strong {
+        font-size: var(--font-size-200);
+    }
+}
+
+
+/* ==========================================================================
+   26. SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .services-intro__link:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   27. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .services-intro__link,
+    .services-intro__link::before,
+    .services-intro__link > span,
+    .services-intro__link svg {
+        transition: none;
+    }
+
+    .services-intro__link:hover,
+    .services-intro__link:focus-visible,
+    .services-intro__link:hover svg,
+    .services-intro__link:focus-visible svg {
+        transform: none;
+    }
+}
+
+/* ==========================================================================
+   28. FORNECIMENTO ALIMENTAR
+   ========================================================================== */
+
+.service-detail {
+    position: relative;
+    overflow: hidden;
+
+    background: var(--color-white);
+}
+
+.service-detail__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(4rem, 6vw, 8rem);
+}
+
+.service-detail__visual,
+.service-detail__content {
+    min-width: 0;
+}
+
+
+/* ==========================================================================
+   IMAGEM
+   ========================================================================== */
+
+.service-detail__visual {
+    position: relative;
+}
+
+.service-detail__media {
+    overflow: hidden;
+
+    border-radius: var(--radius-2xl);
+
+    box-shadow: var(--shadow-xl);
+}
+
+.service-detail__image {
+    display: block;
+
+    width: 100%;
+    height: 42rem;
+
+    object-fit: cover;
+
+    transition: transform .8s ease;
+}
+
+.service-detail__media:hover .service-detail__image {
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   CARD SOBREPOSTO
+   ========================================================================== */
+
+.service-detail__label {
+    position: absolute;
+
+    left: -2rem;
+    bottom: 2rem;
+
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+
+    padding: var(--space-5);
+
+    background: rgba(255,255,255,.95);
+
+    border-radius: var(--radius-xl);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.service-detail__label-number {
+    display: grid;
+    place-items: center;
+
+    width: 3.3rem;
+    height: 3.3rem;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent);
+
+    border-radius: 50%;
+
+    font-weight: 700;
+}
+
+.service-detail__label strong {
+    display: block;
+
+    margin-bottom: .25rem;
+
+    color: var(--color-primary-950);
+}
+
+.service-detail__label span:last-child {
+    color: var(--color-text-muted);
+
+    font-size: .9rem;
+}
+
+
+/* ==========================================================================
+   TEXTO
+   ========================================================================== */
+
+.service-detail__title {
+    max-width: 14ch;
+}
+
+.service-detail__text {
+    display: grid;
+    gap: var(--space-4);
+
+    margin-top: var(--space-6);
+}
+
+.service-detail__text p {
+    color: var(--color-text-muted);
+
+    line-height: 1.9;
+
+    text-align: justify;
+}
+
+
+/* ==========================================================================
+   FEATURES
+   ========================================================================== */
+
+.service-detail__features {
+    display: grid;
+    gap: var(--space-4);
+
+    margin-top: var(--space-8);
+
+    list-style: none;
+}
+
+.service-detail__feature {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-4);
+
+    padding: var(--space-5);
+
+    background: var(--color-surface-soft);
+
+    border: 1px solid rgba(38,77,55,.08);
+
+    border-radius: var(--radius-xl);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.service-detail__feature:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(189,229,19,.45);
+
+    box-shadow: var(--shadow-md);
+}
+
+.service-detail__feature>span {
+    display: grid;
+    place-items: center;
+
+    width: 2.8rem;
+    height: 2.8rem;
+
+    color: var(--color-primary-950);
+    background: var(--color-accent);
+
+    border-radius: 50%;
+
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.service-detail__feature strong {
+    display: block;
+
+    margin-bottom: .35rem;
+
+    color: var(--color-primary-950);
+
+    font-size: 1.05rem;
+}
+
+.service-detail__feature p {
+    color: var(--color-text-muted);
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   DECORAÇÕES
+   ========================================================================== */
+
+.service-detail__decoration {
+    position: absolute;
+
+    pointer-events: none;
+}
+
+.service-detail__decoration--accent {
+    top: -1rem;
+    right: -1rem;
+
+    width: 1rem;
+    height: 1rem;
+
+    background: var(--color-accent);
+
+    border-radius: 50%;
+}
+
+.service-detail__decoration--outline {
+    bottom: -2rem;
+    left: -2rem;
+
+    width: 7rem;
+    height: 7rem;
+
+    border: 1px solid rgba(38,77,55,.12);
+
+    border-radius: 50%;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width:992px){
+
+    .service-detail__grid{
+        grid-template-columns:1fr;
+    }
+
+    .service-detail__label{
+        left:1rem;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .service-detail__image{
+        height:22rem;
+    }
+
+    .service-detail__title{
+        max-width:none;
+    }
+
+    .service-detail__text p{
+        text-align:left;
+    }
+
+    .service-detail__label{
+        right:1rem;
+        left:1rem;
+
+        width:auto;
+    }
+
+    .service-detail__feature{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ==========================================================================
+   PROCESSAMENTO E EMBALAGEM
+   ========================================================================== */
+
+/* Inverte a posição da imagem */
+
+.service-detail--reverse .service-detail__grid {
+    direction: rtl;
+}
+
+.service-detail--reverse .service-detail__content,
+.service-detail--reverse .service-detail__visual {
+    direction: ltr;
+}
+
+
+/* Fundo ligeiramente diferente */
+
+.service-detail--reverse {
+    background:
+        linear-gradient(
+            180deg,
+            #fbfcfb,
+            #f6f8f6
+        );
+}
+
+
+/* Card sobreposto do lado direito */
+
+.service-detail--reverse .service-detail__label {
+    left: auto;
+    right: -2rem;
+}
+
+
+/* Decorações */
+
+.service-detail--reverse
+.service-detail__decoration--accent {
+    left: -1rem;
+    right: auto;
+}
+
+.service-detail--reverse
+.service-detail__decoration--outline {
+    right: -2rem;
+    left: auto;
+}
+
+
+/* Hover da imagem */
+
+.service-detail--reverse
+.service-detail__media {
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
+
+.service-detail--reverse
+.service-detail__media:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 2rem 4rem
+        rgba(20, 45, 35, .14);
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width:992px){
+
+    .service-detail--reverse
+    .service-detail__grid{
+        direction:ltr;
+    }
+
+    .service-detail--reverse
+    .service-detail__label{
+
+        right:auto;
+        left:1rem;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .service-detail--reverse
+    .service-detail__label{
+
+        left:1rem;
+        right:1rem;
+    }
+
+}
+/* ==========================================================================
+   DISTRIBUIÇÃO EMPRESARIAL
+   ========================================================================== */
+
+#distribuicao {
+    position: relative;
+}
+
+#distribuicao::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(92%, 120rem);
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(38, 77, 55, .12),
+            transparent
+        );
+}
+
+#distribuicao .service-detail__media {
+    position: relative;
+
+    background: var(--color-primary-950);
+
+    border-radius: var(--radius-2xl);
+
+    overflow: hidden;
+}
+
+#distribuicao .service-detail__media::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(7, 27, 18, .22),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+#distribuicao .service-detail__image {
+    transition:
+        transform .7s ease,
+        filter .7s ease;
+}
+
+#distribuicao:hover .service-detail__image {
+    transform: scale(1.04);
+
+    filter: saturate(1.08);
+}
+
+#distribuicao .service-detail__label {
+    background:
+        rgba(255,255,255,.96);
+
+    backdrop-filter: blur(14px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+}
+
+#distribuicao .service-detail__feature {
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background-color .35s ease,
+        box-shadow .35s ease;
+}
+
+#distribuicao .service-detail__feature:hover {
+    background: var(--color-white);
+
+    border-color:
+        rgba(189,229,19,.45);
+
+    box-shadow:
+        0 1rem 2rem
+        rgba(38,77,55,.08);
+}
+/* ==========================================================================
+   PROCUREMENT EMPRESARIAL
+   ========================================================================== */
+
+.service-detail--procurement {
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8faf8
+        );
+}
+
+.service-detail--procurement::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(92%, 120rem);
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(38,77,55,.12),
+            transparent
+        );
+}
+
+
+/* ==========================================================================
+   IMAGEM
+   ========================================================================== */
+
+.service-detail--procurement .service-detail__media{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:var(--radius-2xl);
+
+    background:var(--color-primary-950);
+}
+
+.service-detail--procurement .service-detail__media::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(7,27,18,.28),
+            transparent 45%
+        );
+
+    pointer-events:none;
+}
+
+.service-detail--procurement .service-detail__image{
+
+    transition:
+        transform .8s ease,
+        filter .8s ease;
+}
+
+.service-detail--procurement:hover
+.service-detail__image{
+
+    transform:scale(1.05);
+
+    filter:saturate(1.08);
+}
+
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.service-detail--procurement
+.service-detail__label{
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid
+        rgba(255,255,255,.55);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 1.4rem 3rem
+        rgba(20,45,35,.12);
+}
+
+
+/* ==========================================================================
+   FEATURES
+   ========================================================================== */
+
+.service-detail--procurement
+.service-detail__feature{
+
+    transition:
+        transform .35s ease,
+        background-color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.service-detail--procurement
+.service-detail__feature:hover{
+
+    background:var(--color-white);
+
+    border-color:
+        rgba(189,229,19,.42);
+
+    box-shadow:
+        0 1rem 2rem
+        rgba(38,77,55,.08);
+}
+
+.service-detail--procurement
+.service-detail__feature>span{
+
+    background:var(--color-accent);
+
+    color:var(--color-primary-950);
+}
+
+
+/* ==========================================================================
+   DECORAÇÕES
+   ========================================================================== */
+
+.service-detail--procurement
+.service-detail__decoration--accent{
+
+    left:-1rem;
+    right:auto;
+
+    background:var(--color-accent);
+}
+
+.service-detail--procurement
+.service-detail__decoration--outline{
+
+    right:-2rem;
+    left:auto;
+
+    border-color:
+        rgba(38,77,55,.10);
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width:992px){
+
+    .service-detail--procurement
+    .service-detail__label{
+
+        left:1rem;
+        right:auto;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .service-detail--procurement
+    .service-detail__label{
+
+        left:1rem;
+        right:1rem;
+
+        width:auto;
+    }
+
+}
+
+/* ==========================================================================
+   COMO TRABALHAMOS
+   ========================================================================== */
+
+.services-process {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8faf8 0%,
+            #ffffff 100%
+        );
+}
+
+.services-process::before {
+    content: "";
+
+    position: absolute;
+    top: -12rem;
+    right: -10rem;
+
+    width: 28rem;
+    height: 28rem;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(189,229,19,.10),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+
+.services-process .section-heading {
+    max-width: 70rem;
+    margin: 0 auto var(--space-12);
+
+    text-align: center;
+}
+
+.services-process .section-title {
+    max-width: 16ch;
+    margin-inline: auto;
+}
+
+.services-process .section-description {
+    max-width: 48rem;
+    margin: var(--space-5) auto 0;
+
+    color: var(--color-text-muted);
+
+    line-height: 1.8;
+}
+
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
+.services-process__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-6);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    counter-reset: none;
+}
+
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.services-process__step {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-7);
+
+    background: var(--color-white);
+
+    border: 1px solid rgba(38,77,55,.08);
+    border-radius: var(--radius-2xl);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.services-process__step:hover {
+    transform: translateY(-8px);
+
+    border-color:
+        rgba(189,229,19,.45);
+
+    box-shadow:
+        0 2rem 4rem
+        rgba(20,45,35,.10);
+}
+
+
+/* ==========================================================================
+   LINHA ENTRE ETAPAS
+   ========================================================================== */
+
+.services-process__step:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+    top: 3.8rem;
+    right: -3.4rem;
+
+    width: 3rem;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--color-accent),
+            rgba(189,229,19,.25)
+        );
+}
+
+
+/* ==========================================================================
+   NÚMERO
+   ========================================================================== */
+
+.services-process__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-bottom: var(--space-5);
+
+    color: var(--color-primary-950);
+    background: var(--color-accent);
+
+    border-radius: 50%;
+
+    font-size: .95rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================================================
+   ÍCONE
+   ========================================================================== */
+
+.services-process__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: var(--space-5);
+
+    color: var(--color-primary);
+
+    background:
+        rgba(38,77,55,.06);
+
+    border-radius: var(--radius-xl);
+}
+
+.services-process__icon svg {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+
+/* ==========================================================================
+   TEXTO
+   ========================================================================== */
+
+.services-process__step h3 {
+    margin-bottom: var(--space-3);
+
+    color: var(--color-primary-950);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.services-process__step p {
+    color: var(--color-text-muted);
+
+    line-height: 1.8;
+
+    text-align: left;
+}
+
+
+/* ==========================================================================
+   LAPTOP
+   ========================================================================== */
+
+@media (max-width:1200px){
+
+    .services-process__grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .services-process__step:nth-child(3)::after{
+        display:none;
+    }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width:992px){
+
+    .services-process__grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .services-process__step::after{
+        display:none;
+    }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .services-process__grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-process .section-heading{
+        margin-bottom:var(--space-8);
+    }
+
+    .services-process__step{
+        padding:var(--space-6);
+    }
+
+    .services-process .section-title{
+        max-width:none;
+    }
+
+}

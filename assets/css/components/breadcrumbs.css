@@ -1,0 +1,187 @@
+/* ==========================================================================
+   BREADCRUMBS — VERDE SOW
+   Ficheiro: assets/css/components/breadcrumbs.css
+
+   Responsabilidade:
+   - Navegação contextual
+   - Melhorar SEO e UX
+   - Reutilizável em todas as páginas internas
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. BREADCRUMB
+   ========================================================================== */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-7);
+
+    font-size: var(--font-size-200);
+}
+
+
+/* ==========================================================================
+   02. LISTA
+   ========================================================================== */
+
+.breadcrumb__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* ==========================================================================
+   03. ITEM
+   ========================================================================== */
+
+.breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    color: rgba(255,255,255,.65);
+}
+
+
+/* ==========================================================================
+   04. SEPARADOR
+   ========================================================================== */
+
+.breadcrumb__item:not(:last-child)::after {
+
+    content: "/";
+
+    color: rgba(255,255,255,.35);
+
+    font-weight: 400;
+}
+
+
+/* ==========================================================================
+   05. LINKS
+   ========================================================================== */
+
+.breadcrumb__link {
+
+    color: inherit;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-base);
+}
+
+.breadcrumb__link:hover,
+.breadcrumb__link:focus-visible {
+
+    color: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   06. PÁGINA ATUAL
+   ========================================================================== */
+
+.breadcrumb__current {
+
+    color: var(--color-white);
+
+    font-weight: var(--font-weight-semibold);
+
+    cursor: default;
+}
+
+
+/* ==========================================================================
+   07. VERSÃO ESCURA
+   ========================================================================== */
+
+.breadcrumb--dark
+.breadcrumb__item{
+
+    color:rgba(255,255,255,.65);
+}
+
+.breadcrumb--dark
+.breadcrumb__current{
+
+    color:white;
+}
+
+
+/* ==========================================================================
+   08. VERSÃO CLARA
+   ========================================================================== */
+
+.breadcrumb--light
+.breadcrumb__item{
+
+    color:var(--color-text-muted);
+}
+
+.breadcrumb--light
+.breadcrumb__item::after{
+
+    color:rgba(38,77,55,.28);
+}
+
+.breadcrumb--light
+.breadcrumb__current{
+
+    color:var(--color-primary-900);
+}
+
+.breadcrumb--light
+.breadcrumb__link:hover{
+
+    color:var(--color-primary-700);
+}
+
+
+/* ==========================================================================
+   09. RESPONSIVO
+   ========================================================================== */
+
+@media (max-width:48rem){
+
+    .breadcrumb{
+
+        gap:var(--space-2);
+
+        margin-bottom:var(--space-6);
+
+        font-size:.85rem;
+    }
+
+    .breadcrumb__list{
+
+        gap:var(--space-2);
+    }
+
+}
+
+
+/* ==========================================================================
+   10. REDUCED MOTION
+   ========================================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    .breadcrumb__link{
+
+        transition:none;
+    }
+
+}

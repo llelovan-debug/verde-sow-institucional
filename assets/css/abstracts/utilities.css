@@ -1,0 +1,663 @@
+/* ==========================================================================
+   UTILITÁRIOS — VERDE SOW
+   Ficheiro: assets/css/abstracts/utilities.css
+
+   Responsabilidade:
+   - Fornecer poucas classes utilitárias, claras e reutilizáveis
+   - Evitar estilos repetidos em páginas e componentes
+   - Apoiar layout, alinhamento, espaçamento e acessibilidade
+   - Não substituir os componentes nem o CSS específico das páginas
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. ALINHAMENTO DE TEXTO
+   ========================================================================== */
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   02. ALINHAMENTO DE BLOCOS
+   ========================================================================== */
+
+.mx-auto {
+    margin-inline: auto !important;
+}
+
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.mr-auto {
+    margin-right: auto !important;
+}
+
+
+/* ==========================================================================
+   03. LARGURAS DE LEITURA
+   ========================================================================== */
+
+.measure-narrow {
+    max-width: var(--text-measure-narrow);
+}
+
+.measure-default {
+    max-width: var(--text-measure-default);
+}
+
+.measure-wide {
+    max-width: var(--text-measure-wide);
+}
+
+
+/* ==========================================================================
+   04. DISPLAY
+   ========================================================================== */
+
+.d-block {
+    display: block !important;
+}
+
+.d-inline {
+    display: inline !important;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-inline-flex {
+    display: inline-flex !important;
+}
+
+.d-grid {
+    display: grid !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+
+/* ==========================================================================
+   05. FLEXBOX
+   ========================================================================== */
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.items-start {
+    align-items: flex-start !important;
+}
+
+.items-center {
+    align-items: center !important;
+}
+
+.items-end {
+    align-items: flex-end !important;
+}
+
+.justify-start {
+    justify-content: flex-start !important;
+}
+
+.justify-center {
+    justify-content: center !important;
+}
+
+.justify-end {
+    justify-content: flex-end !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
+}
+
+.justify-around {
+    justify-content: space-around !important;
+}
+
+
+/* ==========================================================================
+   06. GRID
+   ========================================================================== */
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* ==========================================================================
+   07. GAPS
+   ========================================================================== */
+
+.gap-1 {
+    gap: var(--space-1) !important;
+}
+
+.gap-2 {
+    gap: var(--space-2) !important;
+}
+
+.gap-3 {
+    gap: var(--space-3) !important;
+}
+
+.gap-4 {
+    gap: var(--space-4) !important;
+}
+
+.gap-5 {
+    gap: var(--space-5) !important;
+}
+
+.gap-6 {
+    gap: var(--space-6) !important;
+}
+
+.gap-7 {
+    gap: var(--space-7) !important;
+}
+
+.gap-8 {
+    gap: var(--space-8) !important;
+}
+
+.gap-9 {
+    gap: var(--space-9) !important;
+}
+
+.gap-10 {
+    gap: var(--space-10) !important;
+}
+
+
+/* ==========================================================================
+   08. MARGENS — BLOCO
+   ========================================================================== */
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mt-1 {
+    margin-top: var(--space-1) !important;
+}
+
+.mt-2 {
+    margin-top: var(--space-2) !important;
+}
+
+.mt-3 {
+    margin-top: var(--space-3) !important;
+}
+
+.mt-4 {
+    margin-top: var(--space-4) !important;
+}
+
+.mt-5 {
+    margin-top: var(--space-5) !important;
+}
+
+.mt-6 {
+    margin-top: var(--space-6) !important;
+}
+
+.mt-7 {
+    margin-top: var(--space-7) !important;
+}
+
+.mt-8 {
+    margin-top: var(--space-8) !important;
+}
+
+.mt-9 {
+    margin-top: var(--space-9) !important;
+}
+
+.mt-10 {
+    margin-top: var(--space-10) !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: var(--space-1) !important;
+}
+
+.mb-2 {
+    margin-bottom: var(--space-2) !important;
+}
+
+.mb-3 {
+    margin-bottom: var(--space-3) !important;
+}
+
+.mb-4 {
+    margin-bottom: var(--space-4) !important;
+}
+
+.mb-5 {
+    margin-bottom: var(--space-5) !important;
+}
+
+.mb-6 {
+    margin-bottom: var(--space-6) !important;
+}
+
+.mb-7 {
+    margin-bottom: var(--space-7) !important;
+}
+
+.mb-8 {
+    margin-bottom: var(--space-8) !important;
+}
+
+.mb-9 {
+    margin-bottom: var(--space-9) !important;
+}
+
+.mb-10 {
+    margin-bottom: var(--space-10) !important;
+}
+
+
+/* ==========================================================================
+   09. PADDINGS
+   ========================================================================== */
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-3 {
+    padding: var(--space-3) !important;
+}
+
+.p-4 {
+    padding: var(--space-4) !important;
+}
+
+.p-5 {
+    padding: var(--space-5) !important;
+}
+
+.p-6 {
+    padding: var(--space-6) !important;
+}
+
+.p-7 {
+    padding: var(--space-7) !important;
+}
+
+.p-8 {
+    padding: var(--space-8) !important;
+}
+
+.py-4 {
+    padding-block: var(--space-4) !important;
+}
+
+.py-6 {
+    padding-block: var(--space-6) !important;
+}
+
+.py-8 {
+    padding-block: var(--space-8) !important;
+}
+
+.py-10 {
+    padding-block: var(--space-10) !important;
+}
+
+.px-4 {
+    padding-inline: var(--space-4) !important;
+}
+
+.px-6 {
+    padding-inline: var(--space-6) !important;
+}
+
+.px-8 {
+    padding-inline: var(--space-8) !important;
+}
+
+
+/* ==========================================================================
+   10. LARGURAS E ALTURAS
+   ========================================================================== */
+
+.w-full {
+    width: 100% !important;
+}
+
+.h-full {
+    height: 100% !important;
+}
+
+.min-h-screen {
+    min-height: 100vh !important;
+}
+
+
+/* ==========================================================================
+   11. POSICIONAMENTO
+   ========================================================================== */
+
+.relative {
+    position: relative !important;
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+.fixed {
+    position: fixed !important;
+}
+
+.sticky {
+    position: sticky !important;
+}
+
+
+/* ==========================================================================
+   12. OVERFLOW
+   ========================================================================== */
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+.overflow-x-auto {
+    overflow-x: auto !important;
+}
+
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+
+
+/* ==========================================================================
+   13. CORES DE FUNDO
+   ========================================================================== */
+
+.bg-white {
+    background: var(--color-white) !important;
+}
+
+.bg-cream {
+    background: var(--color-cream) !important;
+}
+
+.bg-primary {
+    background: var(--color-primary-700) !important;
+}
+
+.bg-primary-dark {
+    background: var(--color-primary-950) !important;
+}
+
+.bg-accent {
+    background: var(--color-accent-500) !important;
+}
+
+.bg-muted {
+    background: var(--color-surface-soft) !important;
+}
+
+
+/* ==========================================================================
+   14. CORES DE TEXTO
+   ========================================================================== */
+
+.text-primary {
+    color: var(--color-primary-700) !important;
+}
+
+.text-primary-dark {
+    color: var(--color-primary-950) !important;
+}
+
+.text-accent {
+    color: var(--color-accent-500) !important;
+}
+
+.text-muted {
+    color: var(--color-text-muted) !important;
+}
+
+.text-white {
+    color: var(--color-white) !important;
+}
+
+.text-error {
+    color: var(--color-error) !important;
+}
+
+.text-success {
+    color: var(--color-success) !important;
+}
+
+
+/* ==========================================================================
+   15. BORDER RADIUS
+   ========================================================================== */
+
+.rounded-sm {
+    border-radius: var(--radius-sm) !important;
+}
+
+.rounded-md {
+    border-radius: var(--radius-md) !important;
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg) !important;
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl) !important;
+}
+
+.rounded-2xl {
+    border-radius: var(--radius-2xl) !important;
+}
+
+.rounded-pill {
+    border-radius: var(--radius-pill) !important;
+}
+
+
+/* ==========================================================================
+   16. SOMBRAS
+   ========================================================================== */
+
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.shadow-xl {
+    box-shadow: var(--shadow-xl) !important;
+}
+
+
+/* ==========================================================================
+   17. BORDAS
+   ========================================================================== */
+
+.border {
+    border: var(--border-default) !important;
+}
+
+.border-strong {
+    border: var(--border-strong) !important;
+}
+
+.border-none {
+    border: 0 !important;
+}
+
+
+/* ==========================================================================
+   18. ESTADOS VISUAIS
+   ========================================================================== */
+
+.is-active {
+    pointer-events: auto;
+}
+
+.is-inactive {
+    pointer-events: none;
+    opacity: var(--opacity-muted);
+}
+
+.is-disabled {
+    pointer-events: none;
+    opacity: var(--opacity-disabled);
+}
+
+.is-loading {
+    cursor: wait;
+}
+
+
+/* ==========================================================================
+   19. VISIBILIDADE RESPONSIVA
+   ========================================================================== */
+
+.only-desktop {
+    display: block;
+}
+
+.only-tablet,
+.only-mobile {
+    display: none;
+}
+
+
+/* ==========================================================================
+   20. RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .only-desktop {
+        display: none;
+    }
+
+    .only-tablet {
+        display: block;
+    }
+}
+
+@media (max-width: 48rem) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .only-tablet {
+        display: none;
+    }
+
+    .only-mobile {
+        display: block;
+    }
+
+    .mobile-text-left {
+        text-align: left !important;
+    }
+
+    .mobile-text-center {
+        text-align: center !important;
+    }
+
+    .mobile-w-full {
+        width: 100% !important;
+    }
+
+    .mobile-flex-column {
+        flex-direction: column !important;
+    }
+}
+
+
+/* ==========================================================================
+   21. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .motion-safe {
+        animation: none !important;
+        transition: none !important;
+    }
+}

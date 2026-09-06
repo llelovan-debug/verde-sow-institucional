@@ -1,0 +1,484 @@
+/* ==========================================================================
+   BOTÕES — VERDE SOW
+   Ficheiro: assets/css/components/buttons.css
+
+   Responsabilidade:
+   - Definir todos os estilos de botões do projeto
+   - Garantir consistência visual e acessibilidade
+   - Evitar botões diferentes em cada página
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. BOTÃO BASE
+   ========================================================================== */
+
+.button {
+    position: relative;
+    isolation: isolate;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+
+    min-height: 3.25rem;
+    padding:
+        0.85rem
+        1.4rem;
+
+    overflow: hidden;
+
+    color: var(--color-primary-950);
+    background: transparent;
+
+    border: var(--border-default);
+    border-radius: var(--radius-pill);
+
+    cursor: pointer;
+
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base),
+        transform var(--transition-base);
+}
+
+.button:hover {
+    transform: translateY(-0.125rem);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button:focus-visible {
+    outline:
+        0.125rem
+        solid
+        var(--color-accent-500);
+
+    outline-offset: 0.25rem;
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+    pointer-events: none;
+
+    opacity: var(--opacity-disabled);
+
+    transform: none;
+}
+
+
+/* ==========================================================================
+   02. BOTÃO PRIMARY
+   ========================================================================== */
+
+.button--primary {
+    color: var(--color-white);
+    background: var(--color-primary-700);
+
+    border-color: var(--color-primary-700);
+
+    box-shadow:
+        0 0.5rem 1.25rem
+        rgba(38, 77, 55, 0.18);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+    color: var(--color-white);
+    background: var(--color-primary-900);
+
+    border-color: var(--color-primary-900);
+
+    box-shadow:
+        0 0.85rem 1.8rem
+        rgba(38, 77, 55, 0.24);
+}
+
+.button--primary:active {
+    background: var(--color-primary-950);
+    border-color: var(--color-primary-950);
+}
+
+
+/* ==========================================================================
+   03. BOTÃO ACCENT
+   ========================================================================== */
+
+.button--accent {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-color: var(--color-accent-500);
+
+    box-shadow:
+        0 0.5rem 1.25rem
+        rgba(189, 229, 19, 0.22);
+}
+
+.button--accent:hover,
+.button--accent:focus-visible {
+    color: var(--color-primary-950);
+    background: var(--color-accent-300);
+
+    border-color: var(--color-accent-300);
+
+    box-shadow:
+        0 0.85rem 1.8rem
+        rgba(189, 229, 19, 0.28);
+}
+
+.button--accent:active {
+    background: var(--color-accent-600);
+    border-color: var(--color-accent-600);
+}
+
+
+/* ==========================================================================
+   04. BOTÃO OUTLINE
+   ========================================================================== */
+
+.button--outline {
+    color: var(--color-primary-800);
+    background: transparent;
+
+    border-color: var(--color-primary-700);
+}
+
+.button--outline:hover,
+.button--outline:focus-visible {
+    color: var(--color-white);
+    background: var(--color-primary-700);
+
+    border-color: var(--color-primary-700);
+
+    box-shadow:
+        0 0.75rem 1.5rem
+        rgba(38, 77, 55, 0.16);
+}
+
+.button--outline:active {
+    background: var(--color-primary-900);
+    border-color: var(--color-primary-900);
+}
+
+
+/* ==========================================================================
+   05. BOTÃO GHOST
+   ========================================================================== */
+
+.button--ghost {
+    color: var(--color-primary-800);
+    background: transparent;
+
+    border-color: transparent;
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+    color: var(--color-primary-950);
+    background: rgba(38, 77, 55, 0.07);
+
+    border-color: transparent;
+}
+
+.button--ghost:active {
+    background: rgba(38, 77, 55, 0.12);
+}
+
+
+/* ==========================================================================
+   06. BOTÃO PARA FUNDO ESCURO
+   ========================================================================== */
+
+.button--ghost-light {
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.button--ghost-light:hover,
+.button--ghost-light:focus-visible {
+    color: var(--color-primary-950);
+    background: var(--color-white);
+
+    border-color: var(--color-white);
+}
+
+.button--ghost-light:active {
+    background: rgba(255, 255, 255, 0.86);
+}
+
+
+/* ==========================================================================
+   07. BOTÃO SECUNDÁRIO ROXO
+   Uso muito limitado
+   ========================================================================== */
+
+.button--secondary {
+    color: var(--color-white);
+    background: var(--color-secondary-500);
+
+    border-color: var(--color-secondary-500);
+}
+
+.button--secondary:hover,
+.button--secondary:focus-visible {
+    background: var(--color-secondary-700);
+    border-color: var(--color-secondary-700);
+
+    box-shadow:
+        0 0.75rem 1.5rem
+        rgba(117, 90, 243, 0.2);
+}
+
+
+/* ==========================================================================
+   08. TAMANHOS
+   ========================================================================== */
+
+.button--small {
+    min-height: 2.75rem;
+    padding:
+        0.7rem
+        1.1rem;
+
+    font-size: var(--font-size-200);
+}
+
+.button--large {
+    min-height: 3.75rem;
+    padding:
+        1rem
+        1.75rem;
+
+    font-size: var(--font-size-400);
+}
+
+.button--extra-large {
+    min-height: 4.25rem;
+    padding:
+        1.15rem
+        2rem;
+
+    font-size: var(--font-size-500);
+}
+
+
+/* ==========================================================================
+   09. LARGURA TOTAL
+   ========================================================================== */
+
+.button--full {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   10. BOTÃO QUADRADO / ÍCONE
+   ========================================================================== */
+
+.button--icon {
+    width: 3.25rem;
+    min-width: 3.25rem;
+    height: 3.25rem;
+
+    padding: 0;
+
+    border-radius: 50%;
+}
+
+.button--icon.button--small {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+}
+
+.button--icon.button--large {
+    width: 3.75rem;
+    min-width: 3.75rem;
+    height: 3.75rem;
+}
+
+
+/* ==========================================================================
+   11. ÍCONES
+   ========================================================================== */
+
+.button__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+
+    flex-shrink: 0;
+
+    stroke: currentColor;
+}
+
+.button--large .button__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.button--extra-large .button__icon {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+
+/* ==========================================================================
+   12. ÍCONE ANTES DO TEXTO
+   ========================================================================== */
+
+.button--icon-left .button__icon {
+    order: -1;
+}
+
+
+/* ==========================================================================
+   13. BOTÃO COM LOADER
+   ========================================================================== */
+
+.button.is-loading {
+    pointer-events: none;
+}
+
+.button.is-loading .button__label {
+    opacity: 0.7;
+}
+
+.button__loader {
+    width: 1rem;
+    height: 1rem;
+
+    flex-shrink: 0;
+
+    border:
+        0.125rem
+        solid
+        currentColor;
+
+    border-right-color: transparent;
+
+    border-radius: 50%;
+
+    animation:
+        buttonLoader
+        700ms
+        linear
+        infinite;
+}
+
+@keyframes buttonLoader {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==========================================================================
+   14. GRUPO DE BOTÕES
+   ========================================================================== */
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.button-group--center {
+    justify-content: center;
+}
+
+.button-group--end {
+    justify-content: flex-end;
+}
+
+
+/* ==========================================================================
+   15. BOTÃO DA NAVBAR
+   ========================================================================== */
+
+.button--header {
+    min-height: 3rem;
+    padding-inline: var(--space-5);
+
+    font-size: var(--font-size-200);
+}
+
+
+/* ==========================================================================
+   16. LINK COM APARÊNCIA DE BOTÃO
+   ========================================================================== */
+
+a.button {
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   17. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .button:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   18. MOBILE
+   ========================================================================== */
+
+@media (max-width: 36rem) {
+    .button-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-group .button {
+        width: 100%;
+    }
+
+    .button--large,
+    .button--extra-large {
+        min-height: 3.5rem;
+        padding-inline: var(--space-6);
+
+        font-size: var(--font-size-300);
+    }
+}
+
+
+/* ==========================================================================
+   19. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .button,
+    .button__icon {
+        transition: none;
+    }
+
+    .button:hover,
+    .button:active {
+        transform: none;
+    }
+
+    .button__loader {
+        animation-duration: 1.5s;
+    }
+}

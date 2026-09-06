@@ -1,0 +1,498 @@
+/* ==========================================================================
+   CABEÇALHO — VERDE SOW
+   Ficheiro: assets/css/layout/header.css
+
+   Responsabilidade:
+   - Definir a estrutura visual do cabeçalho
+   - Controlar altura, transparência e comportamento no scroll
+   - Organizar logótipo, navegação e ações
+   - Manter compatibilidade com desktop, tablet e mobile
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. CABEÇALHO BASE
+   ========================================================================== */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--z-header);
+
+    width: 100%;
+
+    color: var(--color-white);
+    background: transparent;
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base),
+        backdrop-filter var(--transition-base);
+}
+
+
+/* ==========================================================================
+   02. CONTAINER
+   ========================================================================== */
+
+.site-header__container {
+    min-height: var(--header-height-desktop);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+
+    transition:
+        min-height var(--transition-base);
+}
+
+
+/* ==========================================================================
+   03. ESTADO APÓS SCROLL
+   ========================================================================== */
+
+.site-header.is-scrolled {
+    color: var(--color-primary-950);
+    background: rgba(255, 255, 255, 0.92);
+
+    border-bottom-color: rgba(38, 77, 55, 0.1);
+
+    box-shadow:
+        0 0.75rem 2rem rgba(11, 36, 24, 0.08);
+
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+.site-header.is-scrolled .site-header__container {
+    min-height: 5rem;
+}
+
+
+/* ==========================================================================
+   04. LOGÓTIPO
+   ========================================================================== */
+
+.site-logo {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 10rem;
+    min-width: 10rem;
+
+    transition:
+        transform var(--transition-base);
+}
+
+.site-logo:hover,
+.site-logo:focus-visible {
+    transform: scale(1.025);
+}
+
+.site-logo__image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    transition:
+        opacity var(--transition-base),
+        visibility var(--transition-base),
+        transform var(--transition-base);
+}
+
+
+/* ==========================================================================
+   05. VARIAÇÕES DO LOGÓTIPO
+   ========================================================================== */
+
+.site-logo__image--primary {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.site-logo__image--light {
+    position: absolute;
+    inset: 0;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.site-header.is-scrolled
+    .site-logo__image--primary {
+    opacity: 1;
+    visibility: visible;
+}
+
+.site-header.is-scrolled
+    .site-logo__image--light {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* ==========================================================================
+   06. AÇÕES DO CABEÇALHO
+   ========================================================================== */
+
+.site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   07. BOTÃO DO CABEÇALHO
+   ========================================================================== */
+
+.site-header .button--header {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-color: var(--color-accent-500);
+
+    box-shadow:
+        0 0.5rem 1.25rem rgba(189, 229, 19, 0.18);
+}
+
+.site-header .button--header:hover,
+.site-header .button--header:focus-visible {
+    color: var(--color-primary-950);
+    background: var(--color-white);
+
+    border-color: var(--color-white);
+}
+
+.site-header.is-scrolled
+    .button--header {
+    color: var(--color-white);
+    background: var(--color-primary-700);
+
+    border-color: var(--color-primary-700);
+
+    box-shadow:
+        0 0.5rem 1.25rem rgba(38, 77, 55, 0.16);
+}
+
+.site-header.is-scrolled
+    .button--header:hover,
+.site-header.is-scrolled
+    .button--header:focus-visible {
+    background: var(--color-primary-900);
+    border-color: var(--color-primary-900);
+}
+
+
+/* ==========================================================================
+   08. MENU TOGGLE
+   ========================================================================== */
+
+.menu-toggle {
+    position: relative;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        transform var(--transition-base);
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-color: var(--color-accent-500);
+
+    transform: scale(1.035);
+}
+
+.site-header.is-scrolled .menu-toggle {
+    color: var(--color-primary-900);
+    background: var(--color-white);
+
+    border-color: rgba(38, 77, 55, 0.16);
+}
+
+.site-header.is-scrolled
+    .menu-toggle:hover,
+.site-header.is-scrolled
+    .menu-toggle:focus-visible {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-color: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   09. LINHAS DO MENU TOGGLE
+   ========================================================================== */
+
+.menu-toggle__line {
+    position: absolute;
+
+    width: 1.2rem;
+    height: 0.125rem;
+
+    background: currentColor;
+
+    border-radius: var(--radius-pill);
+
+    transition:
+        transform var(--transition-base),
+        opacity var(--transition-base),
+        top var(--transition-base);
+}
+
+.menu-toggle__line:nth-child(1) {
+    top: 0.95rem;
+}
+
+.menu-toggle__line:nth-child(2) {
+    top: 1.42rem;
+}
+
+.menu-toggle__line:nth-child(3) {
+    top: 1.89rem;
+}
+
+
+/* ==========================================================================
+   10. MENU TOGGLE ABERTO
+   ========================================================================== */
+
+.menu-toggle[aria-expanded="true"]
+    .menu-toggle__line:nth-child(1) {
+    top: 1.42rem;
+
+    transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"]
+    .menu-toggle__line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"]
+    .menu-toggle__line:nth-child(3) {
+    top: 1.42rem;
+
+    transform: rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   11. CABEÇALHO SOBRE FUNDO CLARO
+   Usar class="site-header site-header--light"
+   ========================================================================== */
+
+.site-header--light {
+    color: var(--color-primary-950);
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom-color: rgba(38, 77, 55, 0.1);
+
+    box-shadow:
+        0 0.75rem 2rem rgba(11, 36, 24, 0.06);
+
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+.site-header--light
+    .site-logo__image--primary {
+    opacity: 1;
+    visibility: visible;
+}
+
+.site-header--light
+    .site-logo__image--light {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.site-header--light .menu-toggle {
+    color: var(--color-primary-900);
+    background: var(--color-white);
+
+    border-color: rgba(38, 77, 55, 0.16);
+}
+
+
+/* ==========================================================================
+   12. CABEÇALHO ESTÁTICO
+   Usar class="site-header site-header--static"
+   ========================================================================== */
+
+.site-header--static {
+    position: relative;
+
+    color: var(--color-primary-950);
+    background: var(--color-white);
+
+    border-bottom-color: rgba(38, 77, 55, 0.1);
+
+    box-shadow:
+        0 0.5rem 1.5rem rgba(11, 36, 24, 0.05);
+}
+
+.site-header--static
+    .site-logo__image--primary {
+    opacity: 1;
+    visibility: visible;
+}
+
+.site-header--static
+    .site-logo__image--light {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* ==========================================================================
+   13. TABLET
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .site-header__container {
+        min-height: var(--header-height-tablet);
+    }
+
+    .site-header.is-scrolled
+        .site-header__container {
+        min-height: 4.75rem;
+    }
+
+    .site-logo {
+        width: 8.75rem;
+        min-width: 8.75rem;
+    }
+
+    .site-header .button--header {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+}
+
+
+/* ==========================================================================
+   14. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .site-header__container {
+        min-height: var(--header-height-mobile);
+        gap: var(--space-4);
+    }
+
+    .site-header.is-scrolled
+        .site-header__container {
+        min-height: var(--header-height-mobile);
+    }
+
+    .site-logo {
+        width: 7.5rem;
+        min-width: 7.5rem;
+    }
+
+    .menu-toggle {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .menu-toggle__line {
+        width: 1.1rem;
+    }
+
+    .menu-toggle__line:nth-child(1) {
+        top: 0.88rem;
+    }
+
+    .menu-toggle__line:nth-child(2) {
+        top: 1.33rem;
+    }
+
+    .menu-toggle__line:nth-child(3) {
+        top: 1.78rem;
+    }
+
+    .menu-toggle[aria-expanded="true"]
+        .menu-toggle__line:nth-child(1),
+    .menu-toggle[aria-expanded="true"]
+        .menu-toggle__line:nth-child(3) {
+        top: 1.33rem;
+    }
+}
+
+
+/* ==========================================================================
+   15. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 25rem) {
+    .site-logo {
+        width: 6.75rem;
+        min-width: 6.75rem;
+    }
+
+    .menu-toggle {
+        width: 2.65rem;
+        height: 2.65rem;
+    }
+}
+
+
+/* ==========================================================================
+   16. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header,
+    .site-header__container,
+    .site-logo,
+    .site-logo__image,
+    .menu-toggle,
+    .menu-toggle__line {
+        transition: none;
+    }
+
+    .site-logo:hover,
+    .menu-toggle:hover {
+        transform: none;
+    }
+}

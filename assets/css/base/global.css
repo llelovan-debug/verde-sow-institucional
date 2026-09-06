@@ -1,0 +1,610 @@
+/* ==========================================================================
+   ESTILOS GLOBAIS — VERDE SOW
+   Ficheiro: assets/css/base/global.css
+
+   Responsabilidade:
+   - Definir o comportamento global da página
+   - Garantir consistência de layout
+   - Configurar imagens, links, scroll, foco e superfícies
+   - Servir de base para todas as páginas e componentes
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. DOCUMENTO
+   ========================================================================== */
+
+html {
+    min-width: 20rem;
+
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height-desktop);
+
+    background: var(--color-background);
+}
+
+body {
+    min-width: 20rem;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: var(--color-text);
+    background: var(--color-background);
+}
+
+
+/* ==========================================================================
+   02. MODELO DE LAYOUT
+   ========================================================================== */
+
+body,
+.site-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-wrapper {
+    min-height: 100vh;
+}
+
+.site-main {
+    flex: 1;
+}
+
+
+/* ==========================================================================
+   03. ELEMENTOS MULTIMÉDIA
+   ========================================================================== */
+
+img,
+picture,
+svg,
+video,
+canvas {
+    display: block;
+
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+img {
+    object-fit: cover;
+}
+
+svg {
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   04. ELEMENTOS INTERATIVOS
+   ========================================================================== */
+
+a,
+button,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+    color: inherit;
+}
+
+button {
+    padding: 0;
+
+    border: 0;
+
+    background: none;
+
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+}
+
+
+/* ==========================================================================
+   05. FOCO ACESSÍVEL
+   ========================================================================== */
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline:
+        0.125rem
+        solid
+        var(--color-accent-500);
+
+    outline-offset: 0.25rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border-radius: var(--radius-sm);
+}
+
+
+/* ==========================================================================
+   06. CONTAINER GLOBAL
+   ========================================================================== */
+
+.container {
+    width: min(
+        100% - (var(--container-padding-desktop) * 2),
+        var(--container-max-width)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ==========================================================================
+   07. SECÇÕES
+   ========================================================================== */
+
+.section {
+    position: relative;
+
+    padding-block: var(--section-padding-desktop);
+}
+
+.section--compact {
+    padding-block: var(--space-10);
+}
+
+.section--large {
+    padding-block: var(--space-14);
+}
+
+.section--primary {
+    color: var(--color-text-inverse);
+    background: var(--color-primary-950);
+}
+
+.section--cream {
+    background: var(--color-cream);
+}
+
+.section--muted {
+    background: var(--color-surface-soft);
+}
+
+.section--white {
+    background: var(--color-white);
+}
+
+
+/* ==========================================================================
+   08. SUPERFÍCIES
+   ========================================================================== */
+
+.surface {
+    background: var(--color-white);
+
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.surface--soft {
+    background: var(--color-surface);
+}
+
+.surface--dark {
+    color: var(--color-text-inverse);
+    background: var(--color-primary-950);
+}
+
+.surface--accent {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   09. BORDAS E DIVISORES
+   ========================================================================== */
+
+.divider {
+    width: 100%;
+    height: 1px;
+
+    background: var(--color-border);
+}
+
+.divider--strong {
+    background: var(--color-border-strong);
+}
+
+.divider--light {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+
+/* ==========================================================================
+   10. LARGURAS DE CONTEÚDO
+   ========================================================================== */
+
+.content-narrow {
+    max-width: var(--text-measure-narrow);
+}
+
+.content-default {
+    max-width: var(--text-measure-default);
+}
+
+.content-wide {
+    max-width: var(--text-measure-wide);
+}
+
+
+/* ==========================================================================
+   11. ESTADOS GLOBAIS
+   ========================================================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.is-disabled {
+    pointer-events: none;
+    opacity: var(--opacity-disabled);
+}
+
+.is-loading {
+    cursor: wait;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   12. ACESSIBILIDADE
+   ========================================================================== */
+
+.skip-link {
+    position: fixed;
+    top: var(--space-4);
+    left: var(--space-4);
+    z-index: var(--z-toast);
+
+    padding:
+        var(--space-3)
+        var(--space-5);
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+
+    border-radius: var(--radius-pill);
+
+    box-shadow: var(--shadow-md);
+
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-bold);
+
+    transform: translateY(-180%);
+
+    transition: transform var(--transition-base);
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+}
+
+.visually-hidden,
+.sr-only {
+    position: absolute !important;
+
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+
+    overflow: hidden !important;
+
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+
+    white-space: nowrap !important;
+
+    border: 0 !important;
+}
+
+
+/* ==========================================================================
+   13. SCROLLBAR
+   ========================================================================== */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color:
+        var(--color-primary-700)
+        var(--color-neutral-100);
+}
+
+*::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-neutral-100);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--color-primary-700);
+
+    border:
+        0.1875rem
+        solid
+        var(--color-neutral-100);
+
+    border-radius: var(--radius-pill);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-900);
+}
+
+
+/* ==========================================================================
+   14. SELEÇÃO
+   ========================================================================== */
+
+::selection {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   15. ELEMENTOS ESTRUTURAIS
+   ========================================================================== */
+
+main,
+header,
+footer,
+section,
+article,
+aside,
+nav {
+    min-width: 0;
+}
+
+iframe {
+    max-width: 100%;
+
+    border: 0;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+
+    margin: var(--space-8) 0;
+
+    border: 0;
+
+    background: var(--color-border);
+}
+
+
+/* ==========================================================================
+   16. TABELAS
+   ========================================================================== */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding:
+        var(--space-4)
+        var(--space-5);
+
+    text-align: left;
+
+    border-bottom: var(--border-default);
+}
+
+th {
+    color: var(--color-primary-900);
+    background: var(--color-surface);
+
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* ==========================================================================
+   17. CÓDIGO
+   ========================================================================== */
+
+code,
+kbd,
+samp,
+pre {
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+}
+
+code {
+    padding:
+        0.15em
+        0.4em;
+
+    color: var(--color-primary-900);
+    background: var(--color-surface);
+
+    border-radius: var(--radius-xs);
+
+    font-size: 0.9em;
+}
+
+pre {
+    overflow-x: auto;
+
+    padding: var(--space-6);
+
+    color: var(--color-white);
+    background: var(--color-neutral-950);
+
+    border-radius: var(--radius-lg);
+}
+
+
+/* ==========================================================================
+   18. FORMULÁRIOS — BASE
+   ========================================================================== */
+
+form {
+    width: 100%;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+legend {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-primary-900);
+
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* ==========================================================================
+   19. RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    html {
+        scroll-padding-top: var(--header-height-tablet);
+    }
+
+    .container {
+        width: min(
+            100% - (var(--container-padding-tablet) * 2),
+            var(--container-max-width)
+        );
+    }
+
+    .section {
+        padding-block: var(--section-padding-tablet);
+    }
+
+    .section--large {
+        padding-block: var(--space-12);
+    }
+}
+
+@media (max-width: 48rem) {
+    html {
+        scroll-padding-top: var(--header-height-mobile);
+    }
+
+    .container {
+        width: min(
+            100% - (var(--container-padding-mobile) * 2),
+            var(--container-max-width)
+        );
+    }
+
+    .section {
+        padding-block: var(--section-padding-mobile);
+    }
+
+    .section--compact {
+        padding-block: var(--space-8);
+    }
+
+    .section--large {
+        padding-block: var(--space-11);
+    }
+}
+
+
+/* ==========================================================================
+   20. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+}
+
+
+/* ==========================================================================
+   21. SUPORTE A DISPOSITIVOS COM TOQUE
+   ========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    a,
+    button {
+        min-height: 2.75rem;
+    }
+}

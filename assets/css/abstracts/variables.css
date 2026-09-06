@@ -1,0 +1,325 @@
+/* ==========================================================================
+   DESIGN TOKENS — VERDE SOW
+   Ficheiro: assets/css/abstracts/variables.css
+
+   Responsabilidade:
+   - Centralizar todas as decisões visuais do projeto
+   - Evitar valores soltos e duplicados
+   - Garantir consistência entre páginas e componentes
+   ========================================================================== */
+
+:root {
+    /* ======================================================================
+       01. TIPOGRAFIA
+       ====================================================================== */
+
+    --font-family-primary:
+        "Manrope",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    --font-family-body: var(--font-family-primary);
+    --font-family-heading: var(--font-family-primary);
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --font-size-100: 0.75rem;   /* 12px */
+    --font-size-200: 0.875rem;  /* 14px */
+    --font-size-300: 0.9375rem; /* 15px */
+    --font-size-400: 1rem;      /* 16px */
+    --font-size-500: 1.125rem;  /* 18px */
+    --font-size-600: 1.25rem;   /* 20px */
+    --font-size-700: 1.5rem;    /* 24px */
+    --font-size-800: 2rem;      /* 32px */
+    --font-size-900: 3rem;      /* 48px */
+    --font-size-1000: 3.75rem;  /* 60px */
+    --font-size-1100: 4.5rem;   /* 72px */
+
+    --line-height-tight: 1;
+    --line-height-heading: 1.08;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    --line-height-readable: 1.85;
+
+    --letter-spacing-tight: -0.045em;
+    --letter-spacing-heading: -0.035em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.12em;
+    --letter-spacing-wider: 0.16em;
+
+    --text-measure-narrow: 48ch;
+    --text-measure-default: 62ch;
+    --text-measure-wide: 68ch;
+
+    /* ======================================================================
+       02. CORES DA MARCA
+       ====================================================================== */
+
+    --color-primary-50: #F2F7F4;
+    --color-primary-100: #E2ECE6;
+    --color-primary-200: #C4D9CB;
+    --color-primary-300: #9DBDA8;
+    --color-primary-400: #72997F;
+    --color-primary-500: #4E765D;
+    --color-primary-600: #365C45;
+    --color-primary-700: #264D37;
+    --color-primary-800: #173B29;
+    --color-primary-900: #102E20;
+    --color-primary-950: #0B2418;
+
+    --color-accent-50: #FBFEE8;
+    --color-accent-100: #F5FBC9;
+    --color-accent-200: #EAF590;
+    --color-accent-300: #DDEE52;
+    --color-accent-400: #CEE929;
+    --color-accent-500: #BDE513;
+    --color-accent-600: #98BC0D;
+    --color-accent-700: #738F0C;
+    --color-accent-800: #5B700E;
+    --color-accent-900: #4B5C10;
+
+    --color-secondary-50: #F4F1FF;
+    --color-secondary-100: #E9E3FF;
+    --color-secondary-200: #D5C9FF;
+    --color-secondary-300: #B7A2FF;
+    --color-secondary-400: #9678FF;
+    --color-secondary-500: #755AF3;
+    --color-secondary-600: #6041DB;
+    --color-secondary-700: #4F32B7;
+    --color-secondary-800: #412B93;
+    --color-secondary-900: #382678;
+
+    /* ======================================================================
+       03. CORES NEUTRAS E DE INTERFACE
+       ====================================================================== */
+
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    --color-neutral-50: #FAFAF8;
+    --color-neutral-100: #F3F3EF;
+    --color-neutral-200: #E7E7E1;
+    --color-neutral-300: #D5D6CE;
+    --color-neutral-400: #AEB2A8;
+    --color-neutral-500: #858C81;
+    --color-neutral-600: #666E64;
+    --color-neutral-700: #4F574F;
+    --color-neutral-800: #353C36;
+    --color-neutral-900: #202621;
+    --color-neutral-950: #121713;
+
+    --color-cream: #F8F4EC;
+
+    --color-background: var(--color-white);
+    --color-surface: var(--color-cream);
+    --color-surface-soft: var(--color-neutral-50);
+    --color-surface-dark: var(--color-primary-950);
+
+    --color-text: var(--color-neutral-900);
+    --color-text-muted: var(--color-neutral-600);
+    --color-text-soft: var(--color-neutral-700);
+    --color-text-inverse: var(--color-white);
+
+    --color-border: rgba(38, 77, 55, 0.14);
+    --color-border-strong: rgba(38, 77, 55, 0.28);
+    --color-overlay: rgba(11, 36, 24, 0.72);
+
+    /* ======================================================================
+       04. CORES DE ESTADO
+       ====================================================================== */
+
+    --color-success: #2E7D4B;
+    --color-success-soft: rgba(46, 125, 75, 0.1);
+
+    --color-warning: #B87900;
+    --color-warning-soft: rgba(184, 121, 0, 0.1);
+
+    --color-error: #B4493B;
+    --color-error-soft: rgba(180, 73, 59, 0.1);
+
+    --color-info: #3168A8;
+    --color-info-soft: rgba(49, 104, 168, 0.1);
+
+    /* ======================================================================
+       05. ESPAÇAMENTOS
+       ====================================================================== */
+
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-7: 2rem;     /* 32px */
+    --space-8: 2.5rem;   /* 40px */
+    --space-9: 3rem;     /* 48px */
+    --space-10: 4rem;    /* 64px */
+    --space-11: 5rem;    /* 80px */
+    --space-12: 6rem;    /* 96px */
+    --space-13: 7.5rem;  /* 120px */
+    --space-14: 10rem;   /* 160px */
+
+    /* ======================================================================
+       06. LAYOUT E CONTAINERS
+       ====================================================================== */
+
+    --container-max-width: 82.5rem; /* 1320px */
+
+    --container-padding-desktop: 2rem;
+    --container-padding-tablet: 1.5rem;
+    --container-padding-mobile: 1.25rem;
+
+    --section-padding-desktop: var(--space-13);
+    --section-padding-tablet: var(--space-11);
+    --section-padding-mobile: var(--space-10);
+
+    --header-height-desktop: 6rem;
+    --header-height-tablet: 5.25rem;
+    --header-height-mobile: 4.5rem;
+
+    /* ======================================================================
+       07. GRID
+       ====================================================================== */
+
+    --grid-columns-desktop: 12;
+    --grid-columns-tablet: 8;
+    --grid-columns-mobile: 4;
+
+    --grid-gap-small: var(--space-4);
+    --grid-gap-default: var(--space-6);
+    --grid-gap-large: var(--space-8);
+
+    /* ======================================================================
+       08. BORDER RADIUS
+       ====================================================================== */
+
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-pill: 999px;
+
+    /* ======================================================================
+       09. SOMBRAS
+       ====================================================================== */
+
+    --shadow-sm:
+        0 0.25rem 0.75rem rgba(11, 36, 24, 0.06);
+
+    --shadow-md:
+        0 0.75rem 2rem rgba(11, 36, 24, 0.09);
+
+    --shadow-lg:
+        0 1.5rem 4rem rgba(11, 36, 24, 0.13);
+
+    --shadow-xl:
+        0 2.25rem 5.5rem rgba(11, 36, 24, 0.18);
+
+    /* ======================================================================
+       10. BORDAS
+       ====================================================================== */
+
+    --border-width: 1px;
+    --border-default:
+        var(--border-width)
+        solid
+        var(--color-border);
+
+    --border-strong:
+        var(--border-width)
+        solid
+        var(--color-border-strong);
+
+    /* ======================================================================
+       11. TRANSIÇÕES E ANIMAÇÕES
+       ====================================================================== */
+
+    --duration-fast: 160ms;
+    --duration-base: 280ms;
+    --duration-slow: 500ms;
+    --duration-page: 800ms;
+
+    --easing-standard:
+        cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --easing-soft:
+        cubic-bezier(0.22, 1, 0.36, 1);
+
+    --easing-expressive:
+        cubic-bezier(0.16, 1, 0.3, 1);
+
+    --transition-fast:
+        var(--duration-fast)
+        var(--easing-standard);
+
+    --transition-base:
+        var(--duration-base)
+        var(--easing-standard);
+
+    --transition-slow:
+        var(--duration-slow)
+        var(--easing-soft);
+
+    --transition-page:
+        var(--duration-page)
+        var(--easing-expressive);
+
+    /* Compatibilidade com componentes futuros */
+    --animation-easing-standard: var(--easing-standard);
+    --animation-easing-soft: var(--easing-soft);
+
+    /* ======================================================================
+       12. FORMULÁRIOS
+       ====================================================================== */
+
+    --input-height: 3.5rem;
+    --input-padding-inline: 1rem;
+
+    --input-background: var(--color-surface-soft);
+    --input-border: rgba(38, 77, 55, 0.18);
+    --input-border-focus: var(--color-primary-700);
+    --input-placeholder: rgba(102, 110, 100, 0.72);
+
+    /* ======================================================================
+       13. OPACIDADES
+       ====================================================================== */
+
+    --opacity-disabled: 0.5;
+    --opacity-muted: 0.72;
+    --opacity-overlay: 0.84;
+
+    /* ======================================================================
+       14. Z-INDEX
+       ====================================================================== */
+
+    --z-base: 1;
+    --z-content: 10;
+    --z-sticky: 100;
+    --z-header: 500;
+    --z-dropdown: 600;
+    --z-overlay: 800;
+    --z-modal: 900;
+    --z-floating: 1000;
+    --z-toast: 1100;
+
+    /* ======================================================================
+       15. BREAKPOINTS DE REFERÊNCIA
+       Nota:
+       CSS custom properties não podem ser usadas diretamente em @media.
+       Estes valores servem para documentação e JavaScript.
+       ====================================================================== */
+
+    --breakpoint-xs: 25rem;    /* 400px */
+    --breakpoint-sm: 36rem;    /* 576px */
+    --breakpoint-md: 48rem;    /* 768px */
+    --breakpoint-lg: 62rem;    /* 992px */
+    --breakpoint-xl: 75rem;    /* 1200px */
+    --breakpoint-2xl: 90rem;   /* 1440px */
+}

@@ -1,0 +1,552 @@
+/* ==========================================================================
+   TIPOGRAFIA GLOBAL — VERDE SOW
+   Ficheiro: assets/css/base/typography.css
+
+   Responsabilidade:
+   - Definir a fonte oficial do projeto
+   - Criar uma hierarquia tipográfica consistente
+   - Melhorar a leitura dos textos
+   - Aplicar alinhamento e justificação aos parágrafos institucionais
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. CARREGAMENTO DA FONTE
+
+   Observação:
+   A fonte oficial do projeto é Manrope.
+   Este @import deve existir apenas neste ficheiro para evitar duplicação.
+   ========================================================================== */
+
+@import url(
+    "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+);
+
+
+/* ==========================================================================
+   02. CONFIGURAÇÃO GLOBAL
+   ========================================================================== */
+
+html {
+    font-family: var(--font-family-primary);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    color: var(--color-text);
+
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-400);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+}
+
+
+/* ==========================================================================
+   03. TÍTULOS
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+
+    color: var(--color-primary-950);
+
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-heading);
+    letter-spacing: var(--letter-spacing-heading);
+
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: clamp(
+        2.75rem,
+        7vw,
+        var(--font-size-1100)
+    );
+
+    font-weight: var(--font-weight-extrabold);
+    line-height: 0.98;
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+h2 {
+    font-size: clamp(
+        2.25rem,
+        5vw,
+        var(--font-size-1000)
+    );
+
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+h3 {
+    font-size: clamp(
+        1.5rem,
+        3vw,
+        var(--font-size-800)
+    );
+}
+
+h4 {
+    font-size: var(--font-size-700);
+}
+
+h5 {
+    font-size: var(--font-size-600);
+}
+
+h6 {
+    font-size: var(--font-size-500);
+}
+
+
+/* ==========================================================================
+   04. PARÁGRAFOS
+   ========================================================================== */
+
+p {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-400);
+    line-height: var(--line-height-readable);
+
+    text-align: justify;
+    text-wrap: pretty;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+/*
+   Parágrafos consecutivos recebem espaço automaticamente.
+   Isto evita inserir margens manualmente em cada página.
+*/
+
+p + p {
+    margin-top: var(--space-4);
+}
+
+
+/* ==========================================================================
+   05. LARGURA IDEAL DE LEITURA
+   ========================================================================== */
+
+.section-description,
+.page-banner__description,
+.hero__description,
+.card__description,
+.service-card__description,
+.product-card__description,
+.about-text,
+.contact-description,
+.footer-description,
+.readable-text {
+    max-width: var(--text-measure-wide);
+
+    text-align: justify;
+    text-wrap: pretty;
+
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   06. EXCEÇÕES DE ALINHAMENTO
+
+   Nem todos os textos devem ser justificados.
+   Elementos curtos e de interface ficam alinhados normalmente.
+   ========================================================================== */
+
+button,
+.button,
+label,
+input,
+select,
+textarea,
+nav,
+nav a,
+.breadcrumbs,
+.section-eyebrow,
+.page-banner__eyebrow,
+.card__eyebrow,
+.form-error,
+.form-message,
+small {
+    text-align: left;
+    hyphens: none;
+}
+
+button,
+.button {
+    text-align: center;
+}
+
+.text-center p,
+.section-heading--center p,
+.section-heading--center .section-description {
+    margin-inline: auto;
+
+    text-align: center;
+    hyphens: none;
+}
+
+.text-left p {
+    text-align: left;
+    hyphens: none;
+}
+
+.text-justify p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+
+/* ==========================================================================
+   07. LINKS
+   ========================================================================== */
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-700);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 0.25rem;
+}
+
+
+/* ==========================================================================
+   08. ÊNFASE
+   ========================================================================== */
+
+strong,
+b {
+    color: inherit;
+
+    font-weight: var(--font-weight-bold);
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+mark {
+    padding-inline: var(--space-1);
+
+    color: var(--color-primary-950);
+    background: var(--color-accent-300);
+}
+
+
+/* ==========================================================================
+   09. TEXTO PEQUENO
+   ========================================================================== */
+
+small,
+.text-small {
+    color: var(--color-text-muted);
+
+    font-size: var(--font-size-200);
+    line-height: var(--line-height-relaxed);
+}
+
+.text-extra-small {
+    font-size: var(--font-size-100);
+}
+
+
+/* ==========================================================================
+   10. TEXTO GRANDE
+   ========================================================================== */
+
+.text-large {
+    font-size: var(--font-size-500);
+    line-height: var(--line-height-relaxed);
+}
+
+.text-lead {
+    max-width: var(--text-measure-default);
+
+    color: var(--color-text-soft);
+
+    font-size: clamp(
+        var(--font-size-500),
+        1.8vw,
+        var(--font-size-600)
+    );
+    line-height: var(--line-height-relaxed);
+
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+
+/* ==========================================================================
+   11. EYEBROWS E LABELS INSTITUCIONAIS
+   ========================================================================== */
+
+.section-eyebrow,
+.page-banner__eyebrow,
+.hero__eyebrow,
+.card__eyebrow,
+.home-cta__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-4);
+
+    color: var(--color-primary-700);
+
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+
+    text-align: left;
+}
+
+.section-eyebrow::before,
+.page-banner__eyebrow::before,
+.hero__eyebrow::before,
+.home-cta__eyebrow::before {
+    content: "";
+
+    width: 2rem;
+    height: 1px;
+
+    flex-shrink: 0;
+
+    background: currentColor;
+}
+
+
+/* ==========================================================================
+   12. LISTAS
+   ========================================================================== */
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.content-list {
+    display: grid;
+    gap: var(--space-3);
+
+    margin-top: var(--space-5);
+}
+
+.content-list li {
+    position: relative;
+
+    padding-left: var(--space-5);
+
+    color: var(--color-text-muted);
+
+    line-height: var(--line-height-relaxed);
+
+    text-align: justify;
+    hyphens: auto;
+}
+
+.content-list li::before {
+    content: "";
+
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+
+    width: 0.45rem;
+    height: 0.45rem;
+
+    background: var(--color-accent-500);
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* ==========================================================================
+   13. CITAÇÕES
+   ========================================================================== */
+
+blockquote {
+    margin: 0;
+    padding:
+        var(--space-6)
+        var(--space-7);
+
+    color: var(--color-primary-900);
+    background: var(--color-surface);
+
+    border-left: 0.25rem solid var(--color-accent-500);
+    border-radius: var(--radius-lg);
+
+    font-family: var(--font-family-heading);
+    font-size: clamp(
+        var(--font-size-500),
+        2vw,
+        var(--font-size-700)
+    );
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.45;
+
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+
+/* ==========================================================================
+   14. ENDEREÇOS
+   ========================================================================== */
+
+address {
+    color: var(--color-text-muted);
+
+    font-style: normal;
+    line-height: var(--line-height-relaxed);
+}
+
+
+/* ==========================================================================
+   15. FORMULÁRIOS
+   ========================================================================== */
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-family-primary);
+}
+
+button,
+.button,
+label {
+    font-weight: var(--font-weight-semibold);
+}
+
+input,
+select,
+textarea {
+    font-size: var(--font-size-400);
+    line-height: var(--line-height-normal);
+}
+
+
+/* ==========================================================================
+   16. SELEÇÃO DE TEXTO
+   ========================================================================== */
+
+::selection {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   17. RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    body {
+        font-size: var(--font-size-300);
+    }
+
+    p,
+    .section-description,
+    .page-banner__description,
+    .hero__description,
+    .card__description,
+    .service-card__description,
+    .product-card__description,
+    .about-text,
+    .contact-description,
+    .footer-description,
+    .readable-text,
+    .text-lead {
+        line-height: var(--line-height-relaxed);
+    }
+
+    h1 {
+        font-size: clamp(
+            2.5rem,
+            12vw,
+            4.5rem
+        );
+    }
+
+    h2 {
+        font-size: clamp(
+            2.125rem,
+            10vw,
+            3.5rem
+        );
+    }
+
+    h3 {
+        font-size: clamp(
+            1.5rem,
+            7vw,
+            2.25rem
+        );
+    }
+}
+
+
+/* ==========================================================================
+   18. ECRÃS MUITO PEQUENOS
+
+   Em ecrãs estreitos, o texto justificado pode criar espaços grandes.
+   Para preservar a legibilidade, usamos alinhamento à esquerda.
+   ========================================================================== */
+
+@media (max-width: 30rem) {
+    p,
+    .section-description,
+    .page-banner__description,
+    .hero__description,
+    .card__description,
+    .service-card__description,
+    .product-card__description,
+    .about-text,
+    .contact-description,
+    .footer-description,
+    .readable-text,
+    .text-lead,
+    .content-list li,
+    blockquote {
+        text-align: left;
+        hyphens: none;
+    }
+}

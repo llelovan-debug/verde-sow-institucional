@@ -1,0 +1,646 @@
+/* ==========================================================================
+   RESET CSS — VERDE SOW
+   Ficheiro: assets/css/base/reset.css
+
+   Responsabilidade:
+   - Remover estilos inconsistentes dos navegadores
+   - Criar uma base previsível para todo o projeto
+   - Melhorar acessibilidade, formulários e elementos multimédia
+   - Evitar correções repetidas nos restantes ficheiros CSS
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. BOX SIZING
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================================
+   02. DOCUMENTO
+   ========================================================================== */
+
+html {
+    min-width: 20rem;
+
+    color-scheme: light;
+
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    tab-size: 4;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+
+/* ==========================================================================
+   03. BODY
+   ========================================================================== */
+
+body {
+    min-width: 20rem;
+    min-height: 100vh;
+
+    margin: 0;
+
+    text-rendering: optimizeLegibility;
+}
+
+
+/* ==========================================================================
+   04. REMOÇÃO DE MARGENS PADRÃO
+   ========================================================================== */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol,
+fieldset,
+legend,
+pre {
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   05. LISTAS
+   ========================================================================== */
+
+ul,
+ol {
+    padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+
+/* ==========================================================================
+   06. TÍTULOS E TEXTO
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+
+/* ==========================================================================
+   07. LINKS
+   ========================================================================== */
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+
+    background-color: transparent;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+
+/* ==========================================================================
+   08. IMAGENS E MULTIMÉDIA
+   ========================================================================== */
+
+img,
+picture,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: block;
+
+    max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    height: auto;
+}
+
+img {
+    border-style: none;
+}
+
+svg {
+    overflow: visible;
+}
+
+
+/* ==========================================================================
+   09. FIGURAS
+   ========================================================================== */
+
+figure {
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   10. BOTÕES E FORMULÁRIOS
+   ========================================================================== */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+
+    color: inherit;
+
+    font: inherit;
+    line-height: inherit;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    appearance: button;
+    -webkit-appearance: button;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"],
+label,
+select,
+summary {
+    cursor: pointer;
+}
+
+button {
+    padding: 0;
+
+    background: none;
+    border: 0;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+
+    border-style: none;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+
+/* ==========================================================================
+   11. INPUTS
+   ========================================================================== */
+
+input,
+select,
+textarea {
+    width: auto;
+
+    border-radius: 0;
+}
+
+input[type="search"] {
+    appearance: textfield;
+    -webkit-appearance: textfield;
+
+    outline-offset: -2px;
+}
+
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    padding: 0;
+}
+
+input[type="file"] {
+    max-width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+    opacity: 1;
+}
+
+
+/* ==========================================================================
+   12. TEXTAREA
+   ========================================================================== */
+
+textarea {
+    overflow: auto;
+
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   13. SELECT
+   ========================================================================== */
+
+select {
+    max-width: 100%;
+}
+
+
+/* ==========================================================================
+   14. FIELDSET E LEGEND
+   ========================================================================== */
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+legend {
+    display: table;
+
+    max-width: 100%;
+    padding: 0;
+
+    color: inherit;
+
+    white-space: normal;
+}
+
+
+/* ==========================================================================
+   15. DETAILS E SUMMARY
+   ========================================================================== */
+
+details {
+    display: block;
+}
+
+summary {
+    display: list-item;
+}
+
+
+/* ==========================================================================
+   16. TABELAS
+   ========================================================================== */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    text-indent: 0;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+
+/* ==========================================================================
+   17. CITAÇÕES
+   ========================================================================== */
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: "";
+}
+
+
+/* ==========================================================================
+   18. CÓDIGO
+   ========================================================================== */
+
+pre,
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+
+/* ==========================================================================
+   19. TEXTO SEMÂNTICO
+   ========================================================================== */
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    position: relative;
+
+    vertical-align: baseline;
+
+    font-size: 75%;
+    line-height: 0;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+abbr[title] {
+    text-decoration:
+        underline
+        dotted;
+
+    text-decoration-skip-ink: none;
+
+    cursor: help;
+}
+
+mark {
+    color: inherit;
+    background: transparent;
+}
+
+
+/* ==========================================================================
+   20. HORIZONTAL RULE
+   ========================================================================== */
+
+hr {
+    height: 0;
+
+    overflow: visible;
+
+    color: inherit;
+
+    border: 0;
+    border-top: 1px solid currentColor;
+}
+
+
+/* ==========================================================================
+   21. PROGRESS E METER
+   ========================================================================== */
+
+progress {
+    vertical-align: baseline;
+}
+
+meter {
+    appearance: none;
+}
+
+
+/* ==========================================================================
+   22. TEMPLATE E HIDDEN
+   ========================================================================== */
+
+template {
+    display: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================================
+   23. ELEMENTOS DESATIVADOS
+   ========================================================================== */
+
+:disabled {
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+   24. FOCO
+   O estilo visual final será definido em global.css.
+   ========================================================================== */
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: revert;
+}
+
+
+/* ==========================================================================
+   25. SELEÇÃO
+   A cor final será definida em typography.css/global.css.
+   ========================================================================== */
+
+::selection {
+    text-shadow: none;
+}
+
+
+/* ==========================================================================
+   26. AUTOFILL
+   Mantém a tipografia e reduz inconsistências do navegador.
+   ========================================================================== */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    font: inherit;
+
+    transition:
+        background-color 9999s ease-out,
+        color 9999s ease-out;
+}
+
+
+/* ==========================================================================
+   27. CONTEÚDO EDITÁVEL
+   ========================================================================== */
+
+[contenteditable="true"] {
+    outline: none;
+}
+
+
+/* ==========================================================================
+   28. ELEMENTOS ARRASTÁVEIS
+   ========================================================================== */
+
+[draggable="true"] {
+    user-select: none;
+}
+
+
+/* ==========================================================================
+   29. TOUCH
+   ========================================================================== */
+
+a,
+button,
+input,
+select,
+textarea,
+summary {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==========================================================================
+   30. REDUÇÃO DE MOVIMENTO
+   A regra completa continua em global.css e animations.css.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ==========================================================================
+   31. IMPRESSÃO
+   ========================================================================== */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        color: #000000 !important;
+        background: transparent !important;
+
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    img {
+        max-width: 100% !important;
+
+        page-break-inside: avoid;
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    nav,
+    .site-header,
+    .site-footer,
+    .floating-whatsapp,
+    .back-to-top {
+        display: none !important;
+    }
+}

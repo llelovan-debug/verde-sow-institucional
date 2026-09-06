@@ -1,0 +1,768 @@
+/* ==========================================================================
+   ANIMAÇÕES GLOBAIS — VERDE SOW
+   Ficheiro: assets/css/animations.css
+
+   Responsabilidade:
+   - Centralizar animações reutilizáveis
+   - Evitar efeitos duplicados nos CSS das páginas
+   - Trabalhar em conjunto com assets/js/modules/animations.js
+   - Respeitar prefers-reduced-motion
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. VARIÁVEIS LOCAIS DE ANIMAÇÃO
+   ========================================================================== */
+
+:root {
+    --reveal-distance: 2rem;
+    --reveal-scale: 0.96;
+    --reveal-blur: 0.75rem;
+
+    --stagger-step: 100ms;
+
+    --animation-duration-fast: 400ms;
+    --animation-duration-base: 700ms;
+    --animation-duration-slow: 1000ms;
+
+    --animation-delay: 0ms;
+}
+
+
+/* ==========================================================================
+   02. ESTADO BASE DOS ELEMENTOS REVELADOS
+
+   O conteúdo continua visível quando o JavaScript está desativado.
+   A ocultação só é aplicada quando a classe .js existe no <html>.
+   ========================================================================== */
+
+.js [data-reveal],
+.js [data-stagger-item] {
+    opacity: 0;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+
+    transition:
+        opacity var(--animation-duration-base)
+            var(--easing-expressive),
+        transform var(--animation-duration-base)
+            var(--easing-expressive),
+        filter var(--animation-duration-base)
+            var(--easing-expressive);
+
+    transition-delay: var(--animation-delay);
+}
+
+
+/* ==========================================================================
+   03. FADE UP
+   ========================================================================== */
+
+.js [data-reveal="fade-up"] {
+    transform: translateY(var(--reveal-distance));
+}
+
+.js [data-reveal="fade-up"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   04. FADE DOWN
+   ========================================================================== */
+
+.js [data-reveal="fade-down"] {
+    transform: translateY(calc(var(--reveal-distance) * -1));
+}
+
+.js [data-reveal="fade-down"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   05. FADE LEFT
+   ========================================================================== */
+
+.js [data-reveal="fade-left"] {
+    transform: translateX(var(--reveal-distance));
+}
+
+.js [data-reveal="fade-left"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* ==========================================================================
+   06. FADE RIGHT
+   ========================================================================== */
+
+.js [data-reveal="fade-right"] {
+    transform: translateX(calc(var(--reveal-distance) * -1));
+}
+
+.js [data-reveal="fade-right"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* ==========================================================================
+   07. SCALE UP
+   ========================================================================== */
+
+.js [data-reveal="scale-up"] {
+    transform: scale(var(--reveal-scale));
+}
+
+.js [data-reveal="scale-up"].is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ==========================================================================
+   08. SCALE DOWN
+   ========================================================================== */
+
+.js [data-reveal="scale-down"] {
+    transform: scale(1.04);
+}
+
+.js [data-reveal="scale-down"].is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ==========================================================================
+   09. BLUR
+   ========================================================================== */
+
+.js [data-reveal="blur"] {
+    filter: blur(var(--reveal-blur));
+    transform: translateY(1rem);
+}
+
+.js [data-reveal="blur"].is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   10. REVELAÇÃO DE IMAGEM
+
+   Deve ser aplicado ao elemento que envolve a imagem.
+   Exemplo:
+   <figure data-reveal="image">
+       <img ...>
+   </figure>
+   ========================================================================== */
+
+[data-reveal="image"],
+[data-reveal="image-right"] {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.js [data-reveal="image"],
+.js [data-reveal="image-right"] {
+    opacity: 1;
+}
+
+[data-reveal="image"]::before,
+[data-reveal="image-right"]::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    background: var(--color-primary-700);
+
+    transition:
+        transform var(--animation-duration-slow)
+            var(--easing-expressive);
+
+    pointer-events: none;
+}
+
+[data-reveal="image"]::before {
+    transform-origin: right;
+}
+
+[data-reveal="image-right"]::before {
+    transform-origin: left;
+}
+
+.js [data-reveal="image"]::before,
+.js [data-reveal="image-right"]::before {
+    transform: scaleX(1);
+}
+
+.js [data-reveal="image"].is-visible::before,
+.js [data-reveal="image-right"].is-visible::before {
+    transform: scaleX(0);
+}
+
+[data-reveal="image"] img,
+[data-reveal="image-right"] img {
+    transform: scale(1.06);
+
+    transition:
+        transform calc(var(--animation-duration-slow) + 200ms)
+            var(--easing-soft);
+}
+
+[data-reveal="image"].is-visible img,
+[data-reveal="image-right"].is-visible img {
+    transform: scale(1);
+}
+
+
+/* ==========================================================================
+   11. STAGGER
+
+   O atraso será configurado pelo JavaScript com:
+   style="--animation-delay: 100ms"
+   ========================================================================== */
+
+.js [data-stagger-item] {
+    transform: translateY(1.5rem);
+}
+
+.js [data-stagger-item].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   12. ATRASOS MANUAIS
+
+   Podem ser usados sem JavaScript adicional:
+   data-reveal-delay continua a ser tratado pelo módulo JS.
+   Estas classes são opcionais.
+   ========================================================================== */
+
+.delay-100 {
+    --animation-delay: 100ms;
+}
+
+.delay-200 {
+    --animation-delay: 200ms;
+}
+
+.delay-300 {
+    --animation-delay: 300ms;
+}
+
+.delay-400 {
+    --animation-delay: 400ms;
+}
+
+.delay-500 {
+    --animation-delay: 500ms;
+}
+
+
+/* ==========================================================================
+   13. VELOCIDADES
+   ========================================================================== */
+
+.animation-fast {
+    --animation-duration-base: var(--animation-duration-fast);
+}
+
+.animation-slow {
+    --animation-duration-base: var(--animation-duration-slow);
+}
+
+
+/* ==========================================================================
+   14. HOVER DE IMAGENS
+   ========================================================================== */
+
+.image-hover {
+    overflow: hidden;
+}
+
+.image-hover img {
+    transition:
+        transform var(--animation-duration-slow)
+            var(--easing-soft),
+        filter var(--transition-base);
+}
+
+.image-hover:hover img,
+.image-hover:focus-within img {
+    transform: scale(1.045);
+    filter:
+        contrast(1.03)
+        saturate(1.04);
+}
+
+
+/* ==========================================================================
+   15. HOVER DE CARDS
+   ========================================================================== */
+
+.card-lift {
+    transition:
+        transform var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.card-lift:hover,
+.card-lift:focus-within {
+    transform: translateY(-0.5rem);
+
+    border-color: var(--color-border-strong);
+
+    box-shadow: var(--shadow-lg);
+}
+
+
+/* ==========================================================================
+   16. BRILHO EM BOTÕES
+
+   Usar junto com uma classe de botão:
+   class="button button--primary button-shine"
+   ========================================================================== */
+
+.button-shine {
+    position: relative;
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+.button-shine::after {
+    content: "";
+
+    position: absolute;
+    top: -50%;
+    left: -70%;
+    z-index: -1;
+
+    width: 30%;
+    height: 200%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.24),
+            transparent
+        );
+
+    transform: rotate(18deg);
+
+    transition:
+        left 700ms
+        var(--easing-expressive);
+
+    pointer-events: none;
+}
+
+.button-shine:hover::after,
+.button-shine:focus-visible::after {
+    left: 130%;
+}
+
+
+/* ==========================================================================
+   17. MOVIMENTO DO ÍCONE DO BOTÃO
+   ========================================================================== */
+
+.button__icon {
+    transition:
+        transform var(--transition-base);
+}
+
+.button:hover .button__icon,
+.button:focus-visible .button__icon {
+    transform: translateX(0.25rem);
+}
+
+
+/* ==========================================================================
+   18. LINK COM SETA
+   ========================================================================== */
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    transition:
+        color var(--transition-base),
+        gap var(--transition-base);
+}
+
+.text-link svg {
+    width: 1.1rem;
+    height: 1.1rem;
+
+    transition:
+        transform var(--transition-base);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+    gap: var(--space-3);
+}
+
+.text-link:hover svg,
+.text-link:focus-visible svg {
+    transform: translateX(0.2rem);
+}
+
+
+/* ==========================================================================
+   19. FLUTUAÇÃO CONTÍNUA
+   ========================================================================== */
+
+.animate-float {
+    animation:
+        floatElement
+        4.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes floatElement {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.6rem);
+    }
+}
+
+
+/* ==========================================================================
+   20. PULSO
+   ========================================================================== */
+
+.animate-pulse {
+    animation:
+        pulseElement
+        2.4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes pulseElement {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 0.84;
+    }
+}
+
+
+/* ==========================================================================
+   21. PULSO DE SOMBRA
+   ========================================================================== */
+
+.animate-pulse-shadow {
+    animation:
+        pulseShadow
+        2.5s
+        ease-out
+        infinite;
+}
+
+@keyframes pulseShadow {
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(189, 229, 19, 0.34);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 1rem
+            rgba(189, 229, 19, 0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(189, 229, 19, 0);
+    }
+}
+
+
+/* ==========================================================================
+   22. ROTAÇÃO
+   ========================================================================== */
+
+.animate-rotate {
+    animation:
+        rotateElement
+        14s
+        linear
+        infinite;
+}
+
+@keyframes rotateElement {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==========================================================================
+   23. MARQUEE
+
+   Estrutura esperada:
+   .marquee
+       .marquee__track
+           conteúdo duplicado
+   ========================================================================== */
+
+.marquee {
+    overflow: hidden;
+}
+
+.marquee__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+
+    animation:
+        marqueeMovement
+        var(--marquee-duration, 28s)
+        linear
+        infinite;
+
+    will-change: transform;
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeMovement {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* ==========================================================================
+   24. APARECER E DESAPARECER
+   ========================================================================== */
+
+.animate-fade {
+    animation:
+        fadeLoop
+        3s
+        ease-in-out
+        infinite;
+}
+
+@keyframes fadeLoop {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================================
+   25. ÍCONE COM PEQUENA ROTAÇÃO
+   ========================================================================== */
+
+.icon-hover {
+    transition:
+        transform var(--transition-base);
+}
+
+.icon-hover:hover,
+a:hover .icon-hover,
+button:hover .icon-hover {
+    transform:
+        rotate(5deg)
+        scale(1.05);
+}
+
+
+/* ==========================================================================
+   26. ELEMENTOS INTERATIVOS COM ESCALA
+   ========================================================================== */
+
+.hover-scale {
+    transition:
+        transform var(--transition-base);
+}
+
+.hover-scale:hover,
+.hover-scale:focus-visible {
+    transform: scale(1.035);
+}
+
+
+/* ==========================================================================
+   27. ESTADOS DE ENTRADA DE PÁGINA
+   ========================================================================== */
+
+.page-enter {
+    animation:
+        pageEnter
+        600ms
+        var(--easing-expressive)
+        both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================================================
+   28. LOADER
+   ========================================================================== */
+
+.spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+
+    border:
+        0.125rem
+        solid
+        currentColor;
+
+    border-right-color: transparent;
+
+    border-radius: 50%;
+
+    animation:
+        spinnerRotation
+        700ms
+        linear
+        infinite;
+}
+
+@keyframes spinnerRotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==========================================================================
+   29. SUPORTE SEM JAVASCRIPT
+
+   Garante que todos os conteúdos ficam visíveis quando o JS não carrega.
+   ========================================================================== */
+
+.no-js [data-reveal],
+.no-js [data-stagger-item] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+}
+
+.no-js [data-reveal="image"]::before,
+.no-js [data-reveal="image-right"]::before {
+    display: none;
+}
+
+
+/* ==========================================================================
+   30. MOVIMENTO REDUZIDO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    [data-stagger-item],
+    [data-reveal="image"] img,
+    [data-reveal="image-right"] img,
+    .image-hover img,
+    .card-lift,
+    .button-shine::after,
+    .button__icon,
+    .text-link,
+    .text-link svg,
+    .icon-hover,
+    .hover-scale {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+
+        animation: none !important;
+        transition: none !important;
+    }
+
+    [data-reveal="image"]::before,
+    [data-reveal="image-right"]::before {
+        display: none;
+    }
+
+    .animate-float,
+    .animate-pulse,
+    .animate-pulse-shadow,
+    .animate-rotate,
+    .animate-fade,
+    .marquee__track,
+    .page-enter,
+    .spinner {
+        animation: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   31. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+    .marquee:hover .marquee__track {
+        animation-play-state: running;
+    }
+
+    .image-hover:hover img,
+    .card-lift:hover,
+    .button-shine:hover::after,
+    .text-link:hover,
+    .text-link:hover svg,
+    .hover-scale:hover {
+        transform: none;
+    }
+}

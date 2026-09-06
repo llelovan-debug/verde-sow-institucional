@@ -1,0 +1,548 @@
+/* ==========================================================================
+   SECÇÕES — VERDE SOW
+   Ficheiro: assets/css/layout/sections.css
+
+   Responsabilidade:
+   - Padronizar o espaçamento vertical das secções
+   - Organizar cabeçalhos de secção
+   - Controlar fundos, divisões e alinhamentos
+   - Evitar estilos repetidos em cada página
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. SECÇÃO BASE
+   ========================================================================== */
+
+.section {
+    position: relative;
+
+    padding-block: var(--section-padding-desktop);
+}
+
+.section__container {
+    position: relative;
+    z-index: var(--z-content);
+}
+
+
+/* ==========================================================================
+   02. VARIAÇÕES DE ESPAÇAMENTO
+   ========================================================================== */
+
+.section--compact {
+    padding-block: var(--space-10);
+}
+
+.section--medium {
+    padding-block: var(--space-12);
+}
+
+.section--large {
+    padding-block: var(--space-14);
+}
+
+.section--no-top {
+    padding-top: 0;
+}
+
+.section--no-bottom {
+    padding-bottom: 0;
+}
+
+
+/* ==========================================================================
+   03. FUNDOS
+   ========================================================================== */
+
+.section--white {
+    background: var(--color-white);
+}
+
+.section--cream {
+    background: var(--color-cream);
+}
+
+.section--muted {
+    background: var(--color-surface-soft);
+}
+
+.section--primary {
+    color: var(--color-text-inverse);
+    background: var(--color-primary-700);
+}
+
+.section--primary-dark {
+    color: var(--color-text-inverse);
+    background: var(--color-primary-950);
+}
+
+.section--accent {
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   04. SECÇÕES COM EFEITOS DE FUNDO
+   ========================================================================== */
+
+.section--gradient-dark {
+    color: var(--color-white);
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(189, 229, 19, 0.12),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            var(--color-primary-950) 0%,
+            var(--color-primary-800) 100%
+        );
+}
+
+.section--gradient-light {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(189, 229, 19, 0.08),
+            transparent 34%
+        ),
+        var(--color-background);
+}
+
+
+/* ==========================================================================
+   05. CABEÇALHO DE SECÇÃO
+   ========================================================================== */
+
+.section-heading {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 52rem;
+    margin-bottom: var(--space-10);
+}
+
+.section-heading__main {
+    min-width: 0;
+}
+
+.section-heading__side {
+    min-width: 0;
+}
+
+.section-heading__side p {
+    max-width: var(--text-measure-default);
+}
+
+
+/* ==========================================================================
+   06. CABEÇALHO CENTRALIZADO
+   ========================================================================== */
+
+.section-heading--center {
+    align-items: center;
+
+    max-width: 58rem;
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+.section-heading--center .section-title,
+.section-heading--center .section-description {
+    margin-inline: auto;
+    text-align: center;
+    hyphens: none;
+}
+
+
+/* ==========================================================================
+   07. CABEÇALHO DIVIDIDO
+   ========================================================================== */
+
+.section-heading--split {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(18rem, 0.72fr);
+    align-items: end;
+    gap: clamp(
+        var(--space-7),
+        6vw,
+        var(--space-12)
+    );
+
+    max-width: none;
+}
+
+.section-heading--split .section-heading__side {
+    justify-self: end;
+}
+
+
+/* ==========================================================================
+   08. TÍTULOS DE SECÇÃO
+   ========================================================================== */
+
+.section-title {
+    max-width: 18ch;
+
+    color: var(--color-primary-950);
+
+    font-size: clamp(
+        2.25rem,
+        5vw,
+        var(--font-size-1000)
+    );
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+.section-title--wide {
+    max-width: 24ch;
+}
+
+.section-title--light {
+    color: var(--color-white);
+}
+
+.section-title--accent {
+    color: var(--color-accent-500);
+}
+
+
+/* ==========================================================================
+   09. DESCRIÇÃO DA SECÇÃO
+   ========================================================================== */
+
+.section-description {
+    max-width: var(--text-measure-wide);
+    margin-top: var(--space-5);
+
+    color: var(--color-text-muted);
+
+    line-height: var(--line-height-readable);
+}
+
+.section-description--light {
+    color: rgba(255, 255, 255, 0.76);
+}
+
+
+/* ==========================================================================
+   10. AÇÕES DA SECÇÃO
+   ========================================================================== */
+
+.section-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+
+    margin-top: var(--space-8);
+}
+
+.section-actions--center {
+    justify-content: center;
+}
+
+
+/* ==========================================================================
+   11. DIVISÕES ENTRE SECÇÕES
+   ========================================================================== */
+
+.section-divider {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: min(
+        100% - (var(--container-padding-desktop) * 2),
+        var(--container-max-width)
+    );
+    height: 1px;
+
+    margin-inline: auto;
+
+    background: var(--color-border);
+}
+
+.section-divider--light {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+
+/* ==========================================================================
+   12. SECÇÕES COM IMAGEM DE FUNDO
+   ========================================================================== */
+
+.section-with-background {
+    position: relative;
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+.section-with-background__media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+.section-with-background__media img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.section-with-background__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: var(--color-overlay);
+}
+
+
+/* ==========================================================================
+   13. SECÇÃO COM CONTEÚDO E IMAGEM
+   ========================================================================== */
+
+.section-media {
+    position: relative;
+}
+
+.section-media__grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(
+        var(--space-8),
+        7vw,
+        var(--space-14)
+    );
+}
+
+.section-media__content {
+    max-width: 44rem;
+}
+
+.section-media__figure {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-xl);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.section-media__figure img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================================
+   14. SECÇÃO REVERSA
+   ========================================================================== */
+
+.section-media--reverse
+    .section-media__content {
+    order: 2;
+}
+
+.section-media--reverse
+    .section-media__figure {
+    order: 1;
+}
+
+
+/* ==========================================================================
+   15. ESPAÇAMENTO INTERNO DE CONTEÚDO
+   ========================================================================== */
+
+.section-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.section-stack--small {
+    gap: var(--space-4);
+}
+
+.section-stack--large {
+    gap: var(--space-8);
+}
+
+
+/* ==========================================================================
+   16. SECÇÕES COM BORDA
+   ========================================================================== */
+
+.section--border-top {
+    border-top: var(--border-default);
+}
+
+.section--border-bottom {
+    border-bottom: var(--border-default);
+}
+
+
+/* ==========================================================================
+   17. TABLET
+   ========================================================================== */
+
+@media (max-width: 75rem) {
+    .section {
+        padding-block: var(--section-padding-tablet);
+    }
+
+    .section--large {
+        padding-block: var(--space-12);
+    }
+
+    .section-heading {
+        margin-bottom: var(--space-9);
+    }
+
+    .section-heading--split {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(15rem, 0.8fr);
+    }
+
+    .section-media__grid {
+        gap: clamp(
+            var(--space-7),
+            5vw,
+            var(--space-10)
+        );
+    }
+}
+
+
+/* ==========================================================================
+   18. TABLET PEQUENO
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+    .section-heading--split {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .section-heading--split
+        .section-heading__side {
+        justify-self: start;
+    }
+
+    .section-media__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-media--reverse
+        .section-media__content,
+    .section-media--reverse
+        .section-media__figure {
+        order: initial;
+    }
+
+    .section-media__content {
+        max-width: none;
+    }
+}
+
+
+/* ==========================================================================
+   19. MOBILE
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .section {
+        padding-block: var(--section-padding-mobile);
+    }
+
+    .section--compact {
+        padding-block: var(--space-8);
+    }
+
+    .section--medium {
+        padding-block: var(--space-10);
+    }
+
+    .section--large {
+        padding-block: var(--space-11);
+    }
+
+    .section-heading {
+        margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+        max-width: 100%;
+
+        font-size: clamp(
+            2.125rem,
+            10vw,
+            3.5rem
+        );
+    }
+
+    .section-description {
+        margin-top: var(--space-4);
+    }
+
+    .section-actions {
+        margin-top: var(--space-7);
+    }
+
+    .section-divider {
+        width: min(
+            100% - (var(--container-padding-mobile) * 2),
+            var(--container-max-width)
+        );
+    }
+}
+
+
+/* ==========================================================================
+   20. MOBILE PEQUENO
+   ========================================================================== */
+
+@media (max-width: 30rem) {
+    .section-heading--center {
+        align-items: flex-start;
+
+        text-align: left;
+    }
+
+    .section-heading--center .section-title,
+    .section-heading--center .section-description {
+        margin-inline: 0;
+
+        text-align: left;
+    }
+
+    .section-actions,
+    .section-actions--center {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .section-actions .button {
+        width: 100%;
+    }
+}
