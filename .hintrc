@@ -5,5 +5,18 @@
   "hints": {
     "apple-touch-icons": "off",
     "css-prefix-order": "off"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_chr <= 147",
+    "not and_ff <= 149",
+    "not chrome <= 147",
+    "not edge <= 146",
+    "not firefox <= 149",
+    "not ios_saf <= 26.4",
+    "not opera <= 127",
+    "not safari <= 26.4",
+    "not samsung <= 29"
+  ]
 }

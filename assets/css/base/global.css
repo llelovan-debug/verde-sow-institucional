@@ -163,38 +163,6 @@ textarea:focus-visible {
    07. SECÇÕES
    ========================================================================== */
 
-.section {
-    position: relative;
-
-    padding-block: var(--section-padding-desktop);
-}
-
-.section--compact {
-    padding-block: var(--space-10);
-}
-
-.section--large {
-    padding-block: var(--space-14);
-}
-
-.section--primary {
-    color: var(--color-text-inverse);
-    background: var(--color-primary-950);
-}
-
-.section--cream {
-    background: var(--color-cream);
-}
-
-.section--muted {
-    background: var(--color-surface-soft);
-}
-
-.section--white {
-    background: var(--color-white);
-}
-
-
 /* ==========================================================================
    08. SUPERFÍCIES
    ========================================================================== */
@@ -540,13 +508,6 @@ legend {
         );
     }
 
-    .section {
-        padding-block: var(--section-padding-tablet);
-    }
-
-    .section--large {
-        padding-block: var(--space-12);
-    }
 }
 
 @media (max-width: 48rem) {
@@ -561,17 +522,6 @@ legend {
         );
     }
 
-    .section {
-        padding-block: var(--section-padding-mobile);
-    }
-
-    .section--compact {
-        padding-block: var(--space-8);
-    }
-
-    .section--large {
-        padding-block: var(--space-11);
-    }
 }
 
 
