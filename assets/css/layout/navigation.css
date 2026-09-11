@@ -2,11 +2,15 @@
    NAVEGAÇÃO — VERDE SOW
    Ficheiro: assets/css/layout/navigation.css
 
-   Responsabilidade:
-   - Estilizar a navegação desktop
-   - Definir estados ativos e hover
-   - Criar o menu mobile
-   - Controlar backdrop, painel e links
+   Responsabilidades:
+   - Navegação desktop
+   - Página ativa
+   - Menu mobile
+   - Backdrop
+   - Painel lateral
+   - Navegação mobile
+   - Estados sem JavaScript
+   - Dispositivos touch
    ========================================================================== */
 
 
@@ -17,23 +21,38 @@
 .desktop-navigation {
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    margin-left: auto;
+    min-width: 0;
 }
+
 
 .desktop-navigation__list {
     display: flex;
     align-items: center;
+    justify-content: center;
+
     gap: clamp(
         var(--space-4),
         2vw,
         var(--space-7)
     );
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
+
 
 .desktop-navigation__item {
     position: relative;
 }
+
+
+/* ==========================================================================
+   02. LINKS DESKTOP
+   ========================================================================== */
 
 .desktop-navigation__link {
     position: relative;
@@ -43,108 +62,138 @@
 
     min-height: 3rem;
 
-    color: rgba(255, 255, 255, 0.82);
+    padding-inline: 0.1rem;
+
+    color:
+        rgba(255, 255, 255, 0.78);
 
     font-size: var(--font-size-200);
     font-weight: var(--font-weight-semibold);
     line-height: 1;
-    letter-spacing: -0.01em;
+
     white-space: nowrap;
 
     transition:
-        color var(--transition-base),
-        opacity var(--transition-base);
+        color var(--transition-base);
 }
+
+
+/* Linha inferior */
 
 .desktop-navigation__link::after {
     content: "";
 
     position: absolute;
+
     right: 0;
     bottom: 0.45rem;
     left: 0;
 
-    height: 0.125rem;
+    height: 0.12rem;
 
-    background: var(--color-accent-500);
+    background:
+        var(--color-accent-500);
 
-    border-radius: var(--radius-pill);
+    border-radius:
+        var(--radius-pill);
+
+    opacity: 0;
 
     transform: scaleX(0);
     transform-origin: right;
 
     transition:
+        opacity var(--transition-base),
         transform var(--transition-base);
 }
 
+
+/* Hover + página atual */
+
 .desktop-navigation__link:hover,
-.desktop-navigation__link:focus-visible {
-    color: var(--color-white);
-}
-
-.desktop-navigation__link:hover::after,
-.desktop-navigation__link:focus-visible::after,
-.desktop-navigation__link.is-active::after,
-.desktop-navigation__link[aria-current="page"]::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
+.desktop-navigation__link:focus-visible,
 .desktop-navigation__link.is-active,
 .desktop-navigation__link[aria-current="page"] {
     color: var(--color-white);
 }
 
 
+.desktop-navigation__link:hover::after,
+.desktop-navigation__link:focus-visible::after,
+.desktop-navigation__link.is-active::after,
+.desktop-navigation__link[aria-current="page"]::after {
+    opacity: 1;
+
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
 /* ==========================================================================
-   02. NAVEGAÇÃO DESKTOP APÓS SCROLL
+   03. NAVEGAÇÃO APÓS SCROLL
    ========================================================================== */
 
 .site-header.is-scrolled
-    .desktop-navigation__link,
+.desktop-navigation__link,
 .site-header--light
-    .desktop-navigation__link,
+.desktop-navigation__link,
 .site-header--static
-    .desktop-navigation__link {
-    color: var(--color-primary-800);
+.desktop-navigation__link {
+    color: var(--color-primary-700);
 }
 
+
 .site-header.is-scrolled
-    .desktop-navigation__link:hover,
+.desktop-navigation__link:hover,
 .site-header.is-scrolled
-    .desktop-navigation__link:focus-visible,
+.desktop-navigation__link:focus-visible,
 .site-header.is-scrolled
-    .desktop-navigation__link.is-active,
+.desktop-navigation__link.is-active,
 .site-header.is-scrolled
-    .desktop-navigation__link[aria-current="page"],
+.desktop-navigation__link[aria-current="page"],
 .site-header--light
-    .desktop-navigation__link:hover,
+.desktop-navigation__link:hover,
 .site-header--light
-    .desktop-navigation__link:focus-visible,
+.desktop-navigation__link:focus-visible,
 .site-header--light
-    .desktop-navigation__link.is-active,
+.desktop-navigation__link.is-active,
 .site-header--light
-    .desktop-navigation__link[aria-current="page"],
+.desktop-navigation__link[aria-current="page"],
 .site-header--static
-    .desktop-navigation__link:hover,
+.desktop-navigation__link:hover,
 .site-header--static
-    .desktop-navigation__link:focus-visible,
+.desktop-navigation__link:focus-visible,
 .site-header--static
-    .desktop-navigation__link.is-active,
+.desktop-navigation__link.is-active,
 .site-header--static
-    .desktop-navigation__link[aria-current="page"] {
+.desktop-navigation__link[aria-current="page"] {
     color: var(--color-primary-950);
 }
 
 
 /* ==========================================================================
-   03. MENU MOBILE — CONTENTOR
+   04. BLOQUEIO DO BODY
    ========================================================================== */
 
+body.menu-open {
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   05. MENU MOBILE
+   ========================================================================== */
 .mobile-menu {
     position: fixed;
     inset: 0;
+
     z-index: var(--z-overlay);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(18rem, 28rem);
 
     visibility: hidden;
     opacity: 0;
@@ -152,8 +201,8 @@
     pointer-events: none;
 
     transition:
-        opacity var(--transition-base),
-        visibility var(--transition-base);
+        opacity 300ms ease,
+        visibility 300ms ease;
 }
 
 .mobile-menu.is-open,
@@ -164,98 +213,125 @@
     pointer-events: auto;
 }
 
-
 /* ==========================================================================
-   04. BACKDROP
+   06. BACKDROP
    ========================================================================== */
-
 .mobile-menu__backdrop {
     position: absolute;
     inset: 0;
+    z-index: 0;
 
     width: 100%;
     height: 100%;
 
-    background: rgba(11, 36, 24, 0.72);
+    padding: 0;
+    border: 0;
 
-    backdrop-filter: blur(0.35rem);
-    -webkit-backdrop-filter: blur(0.35rem);
+    background: rgba(4, 18, 12, 0);
 
     opacity: 0;
 
+    cursor: pointer;
+
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+
     transition:
-        opacity var(--transition-base);
+        opacity 400ms ease,
+        background-color 400ms ease,
+        backdrop-filter 400ms ease,
+        -webkit-backdrop-filter 400ms ease;
 }
 
-.mobile-menu.is-open
-    .mobile-menu__backdrop,
-.mobile-menu[aria-hidden="false"]
-    .mobile-menu__backdrop {
+.mobile-menu.is-open .mobile-menu__backdrop,
+.mobile-menu[aria-hidden="false"] .mobile-menu__backdrop {
     opacity: 1;
+
+    background: rgba(4, 18, 12, 0.58);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
-
-
 /* ==========================================================================
-   05. PAINEL
+   07. PAINEL MOBILE
    ========================================================================== */
-
 .mobile-menu__panel {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
 
-    width: min(100%, 28rem);
-    height: 100%;
+    z-index: 1;
+    grid-column: 2;
 
     display: flex;
     flex-direction: column;
 
+    width: 100%;
+
+    height: 100%;
+    min-height: 100dvh;
+
     padding:
-        var(--space-6)
         var(--space-6)
         var(--space-7);
 
+    overflow-y: auto;
+
     color: var(--color-white);
+
     background:
         radial-gradient(
-            circle at top right,
-            rgba(189, 229, 19, 0.12),
+            circle at 100% 0%,
+            rgba(189, 229, 19, 0.13),
             transparent 30%
         ),
         var(--color-primary-950);
 
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
     box-shadow:
-        -1.5rem 0 4rem rgba(11, 36, 24, 0.28);
+        -1.5rem 0 4rem
+        rgba(0, 0, 0, 0.24);
 
-    overflow-y: auto;
+    opacity: 0;
 
-    transform: translateX(100%);
+    transform:
+        translate3d(100%, 0, 0);
+
+    will-change:
+        transform,
+        opacity;
 
     transition:
-        transform var(--transition-slow);
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 320ms ease;
 }
 
-.mobile-menu.is-open
-    .mobile-menu__panel,
-.mobile-menu[aria-hidden="false"]
-    .mobile-menu__panel {
-    transform: translateX(0);
-}
+.mobile-menu.is-open .mobile-menu__panel,
+.mobile-menu[aria-hidden="false"] .mobile-menu__panel {
+    opacity: 1;
 
+    transform:
+        translate3d(0, 0, 0);
+}
 
 /* ==========================================================================
-   06. CABEÇALHO DO MENU MOBILE
+   08. CABEÇALHO MOBILE
    ========================================================================== */
-
 .mobile-menu__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-4);
 
-    padding-bottom: var(--space-6);
+    gap: var(--space-5);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    min-height: 4.75rem;
+
+    padding-bottom: var(--space-5);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.11);
 }
 
 .mobile-menu__logo {
@@ -265,51 +341,86 @@
     width: 8rem;
 }
 
+
 .mobile-menu__logo img {
+    display: block;
+
     width: 100%;
     height: auto;
 
     object-fit: contain;
 }
+.mobile-menu__header,
+.mobile-navigation,
+.mobile-menu__footer {
+    opacity: 0;
 
+    transform:
+        translateX(1rem);
+
+    transition:
+        opacity 360ms ease,
+        transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu.is-open .mobile-menu__header,
+.mobile-menu.is-open .mobile-navigation,
+.mobile-menu.is-open .mobile-menu__footer,
+.mobile-menu[aria-hidden="false"] .mobile-menu__header,
+.mobile-menu[aria-hidden="false"] .mobile-navigation,
+.mobile-menu[aria-hidden="false"] .mobile-menu__footer {
+    opacity: 1;
+
+    transform:
+        translateX(0);
+}
+
+.mobile-menu.is-open .mobile-menu__header,
+.mobile-menu[aria-hidden="false"] .mobile-menu__header {
+    transition-delay: 80ms;
+}
+
+.mobile-menu.is-open .mobile-navigation,
+.mobile-menu[aria-hidden="false"] .mobile-navigation {
+    transition-delay: 140ms;
+}
+
+.mobile-menu.is-open .mobile-menu__footer,
+.mobile-menu[aria-hidden="false"] .mobile-menu__footer {
+    transition-delay: 200ms;
+}
 
 /* ==========================================================================
-   07. BOTÃO FECHAR
+   09. BOTÃO FECHAR
    ========================================================================== */
-
 .mobile-menu__close {
     position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
     width: 3rem;
     height: 3rem;
 
-    flex-shrink: 0;
+    flex: 0 0 3rem;
 
     padding: 0;
 
     color: var(--color-white);
     background: rgba(255, 255, 255, 0.06);
 
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%;
 
     cursor: pointer;
-
-    transition:
-        color var(--transition-base),
-        background-color var(--transition-base),
-        border-color var(--transition-base),
-        transform var(--transition-base);
 }
 
 .mobile-menu__close span {
     position: absolute;
+    top: 50%;
+    left: 50%;
 
-    width: 1rem;
+    width: 1.2rem;
     height: 0.125rem;
 
     background: currentColor;
@@ -319,106 +430,113 @@
 }
 
 .mobile-menu__close span:first-child {
-    transform: rotate(45deg);
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
 }
 
 .mobile-menu__close span:last-child {
-    transform: rotate(-45deg);
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
 }
+
+
 /* ==========================================================================
-   08. NAVEGAÇÃO MOBILE
+   10. NAVEGAÇÃO MOBILE
    ========================================================================== */
 
 .mobile-navigation {
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-
-    padding-block: var(--space-8);
+    padding-block:
+        var(--space-7);
 }
+
 
 .mobile-navigation__list {
-    width: 100%;
-
     display: flex;
     flex-direction: column;
-}
 
-.mobile-navigation__list li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+    gap: var(--space-2);
 
-.mobile-navigation__list li:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 
 /* ==========================================================================
-   09. LINKS MOBILE
+   11. LINKS MOBILE
    ========================================================================== */
 
 .mobile-navigation__link {
     position: relative;
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        2rem
+        minmax(0, 1fr);
+
     align-items: center;
+
     gap: var(--space-4);
 
-    width: 100%;
-    min-height: 4.5rem;
+    min-height: 4.2rem;
+
     padding:
         var(--space-4)
-        0;
+        var(--space-3);
 
-    color: rgba(255, 255, 255, 0.72);
+    color:
+        rgba(255, 255, 255, 0.72);
 
-    font-family: var(--font-family-heading);
-    font-size: clamp(
-        1.45rem,
-        5vw,
-        2rem
-    );
-    font-weight: var(--font-weight-bold);
-    line-height: 1.1;
-    letter-spacing: -0.035em;
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-family:
+        var(--font-family-heading);
+
+    font-size:
+        var(--font-size-600);
+
+    font-weight:
+        var(--font-weight-bold);
+
+    line-height: 1.2;
+
+    letter-spacing:
+        -0.025em;
 
     transition:
         color var(--transition-base),
-        padding-left var(--transition-base);
+        padding-left var(--transition-base),
+        background-color var(--transition-base);
 }
 
-.mobile-navigation__link span {
-    min-width: 1.75rem;
 
-    color: var(--color-accent-500);
+/* Número 01, 02, 03... */
 
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-100);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-wide);
+.mobile-navigation__link > span {
+    color:
+        var(--color-accent-500);
+
+    font-family:
+        var(--font-family-primary);
+
+    font-size:
+        var(--font-size-100);
+
+    font-weight:
+        var(--font-weight-bold);
+
+    letter-spacing:
+        var(--letter-spacing-wide);
 }
 
-.mobile-navigation__link::after {
-    content: "";
 
-    position: absolute;
-    right: 0;
-
-    width: 0.55rem;
-    height: 0.55rem;
-
-    background: var(--color-accent-500);
-
-    border-radius: 50%;
-
-    opacity: 0;
-    transform: scale(0.6);
-
-    transition:
-        opacity var(--transition-base),
-        transform var(--transition-base);
-}
+/* Estado atual */
 
 .mobile-navigation__link:hover,
 .mobile-navigation__link:focus-visible,
@@ -426,92 +544,107 @@
 .mobile-navigation__link[aria-current="page"] {
     color: var(--color-white);
 
-    padding-left: var(--space-3);
-}
+    background:
+        rgba(255, 255, 255, 0.045);
 
-.mobile-navigation__link:hover::after,
-.mobile-navigation__link:focus-visible::after,
-.mobile-navigation__link.is-active::after,
-.mobile-navigation__link[aria-current="page"]::after {
-    opacity: 1;
-    transform: scale(1);
+    padding-left:
+        var(--space-5);
 }
 
 
 /* ==========================================================================
-   10. RODAPÉ DO MENU MOBILE
+   12. FOOTER DO MENU
    ========================================================================== */
 
 .mobile-menu__footer {
     display: flex;
     flex-direction: column;
+
+    align-items: flex-start;
+
     gap: var(--space-3);
 
-    padding-top: var(--space-6);
+    margin-top: auto;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top:
+        var(--space-6);
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.11);
 }
 
-.mobile-menu__footer a {
-    width: fit-content;
 
-    color: rgba(255, 255, 255, 0.72);
+.mobile-menu__footer > a {
+    color:
+        rgba(255, 255, 255, 0.65);
 
-    font-size: var(--font-size-300);
+    font-size:
+        var(--font-size-200);
+
     line-height: 1.5;
+
+    transition:
+        color var(--transition-base);
 }
 
-.mobile-menu__footer a:hover,
-.mobile-menu__footer a:focus-visible {
-    color: var(--color-accent-500);
+
+.mobile-menu__footer > a:hover,
+.mobile-menu__footer > a:focus-visible {
+    color:
+        var(--color-accent-500);
 }
 
 
 /* ==========================================================================
-   11. REDES SOCIAIS NO MENU MOBILE
+   13. REDES SOCIAIS
    ========================================================================== */
 
 .mobile-menu__socials {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-4);
 
-    margin-top: var(--space-4);
+    gap:
+        var(--space-3)
+        var(--space-5);
+
+    margin-top:
+        var(--space-4);
 }
+
 
 .mobile-menu__socials a {
     color: var(--color-white);
 
-    font-size: var(--font-size-200);
-    font-weight: var(--font-weight-semibold);
+    font-size:
+        var(--font-size-100);
+
+    font-weight:
+        var(--font-weight-bold);
+
+    letter-spacing:
+        var(--letter-spacing-wide);
+
+    text-transform: uppercase;
+
+    transition:
+        color var(--transition-base);
+}
+
+
+.mobile-menu__socials a:hover,
+.mobile-menu__socials a:focus-visible {
+    color:
+        var(--color-accent-500);
 }
 
 
 /* ==========================================================================
-   12. BODY COM MENU ABERTO
+   14. TABLET — ATIVA MENU MOBILE
    ========================================================================== */
 
-body.menu-open {
-    overflow: hidden;
-}
+@media (max-width: 62rem) {
 
-
-/* ==========================================================================
-   13. DESKTOP
-   ========================================================================== */
-
-@media (min-width: 75.0625rem) {
-    .mobile-menu {
-        display: none;
-    }
-}
-
-
-/* ==========================================================================
-   14. TABLET
-   ========================================================================== */
-
-@media (max-width: 75rem) {
     .desktop-navigation {
         display: none;
     }
@@ -523,38 +656,38 @@ body.menu-open {
    ========================================================================== */
 
 @media (max-width: 48rem) {
+
+    .mobile-menu {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(17rem, 88vw);
+    }
+
     .mobile-menu__panel {
-        width: 100%;
         padding:
             var(--space-5)
-            var(--space-5)
-            var(--space-6);
+            var(--space-5);
     }
 
     .mobile-menu__header {
-        padding-bottom: var(--space-5);
+        padding-bottom:
+            var(--space-5);
     }
 
     .mobile-menu__logo {
-        width: 7.25rem;
+        width: 7.5rem;
     }
 
     .mobile-navigation {
-        padding-block: var(--space-6);
+        padding-block:
+            var(--space-6);
     }
 
     .mobile-navigation__link {
-        min-height: 4rem;
+        min-height: 3.8rem;
 
-        font-size: clamp(
-            1.3rem,
-            7vw,
-            1.8rem
-        );
-    }
-
-    .mobile-menu__footer {
-        padding-top: var(--space-5);
+        font-size:
+            var(--font-size-500);
     }
 }
 
@@ -563,18 +696,23 @@ body.menu-open {
    16. MOBILE PEQUENO
    ========================================================================== */
 
-@media (max-width: 25rem) {
-    .mobile-menu__panel {
-        padding-inline: var(--space-4);
+@media (max-width: 36rem) {
+
+    .mobile-menu {
+        grid-template-columns:
+            0
+            100%;
     }
 
-    .mobile-menu__logo {
-        width: 6.75rem;
+    .mobile-menu__panel {
+        grid-column: 2;
+
+        border-left: 0;
     }
 
     .mobile-menu__close {
-        width: 2.7rem;
-        height: 2.7rem;
+        width: 2.75rem;
+        height: 2.75rem;
     }
 
     .mobile-navigation__link {
@@ -584,22 +722,89 @@ body.menu-open {
 
 
 /* ==========================================================================
-   17. MOVIMENTO REDUZIDO
+   17. SEM JAVASCRIPT
+   ========================================================================== */
+
+.no-js
+.menu-toggle {
+    display: none;
+}
+
+
+.no-js
+.mobile-menu {
+    display: none;
+}
+
+
+/* ==========================================================================
+   18. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+
+    .desktop-navigation__link:hover::after {
+        opacity: 0;
+
+        transform: scaleX(0);
+    }
+
+    .desktop-navigation__link.is-active::after,
+    .desktop-navigation__link[aria-current="page"]::after {
+        opacity: 1;
+
+        transform: scaleX(1);
+    }
+
+    .mobile-menu__close:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   19. MOVIMENTO REDUZIDO
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .desktop-navigation__link,
     .desktop-navigation__link::after,
     .mobile-menu,
     .mobile-menu__backdrop,
     .mobile-menu__panel,
     .mobile-menu__close,
+    .mobile-menu__header,
+    .mobile-navigation,
     .mobile-navigation__link,
-    .mobile-navigation__link::after {
+    .mobile-menu__footer,
+    .mobile-menu__footer a,
+    .mobile-menu__socials a {
         transition: none;
     }
 
-    .mobile-menu__close:hover {
+    .mobile-menu__close:hover,
+    .mobile-menu__close:focus-visible {
         transform: none;
     }
+}
+
+/* ==========================================================================
+   BLUR DA PÁGINA QUANDO O MENU MOBILE ESTÁ ABERTO
+   ========================================================================== */
+
+.site-header,
+.site-main,
+.site-footer {
+    transition:
+        filter 450ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 450ms ease;
+}
+
+body.menu-open .site-header,
+body.menu-open .site-main,
+body.menu-open .site-footer {
+    filter: blur(8px);
+
+    opacity: 0.72;
 }

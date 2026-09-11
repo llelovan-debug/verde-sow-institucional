@@ -2,11 +2,15 @@
    CABEÇALHO — VERDE SOW
    Ficheiro: assets/css/layout/header.css
 
-   Responsabilidade:
-   - Definir a estrutura visual do cabeçalho
-   - Controlar altura, transparência e comportamento no scroll
-   - Organizar logótipo, navegação e ações
-   - Manter compatibilidade com desktop, tablet e mobile
+   Responsabilidades:
+   - Estrutura do cabeçalho
+   - Grid principal
+   - Logótipo e transição
+   - Estado após scroll
+   - Botão principal
+   - Menu toggle
+   - Estados light/static
+   - Responsividade
    ========================================================================== */
 
 
@@ -29,6 +33,7 @@
     border-bottom: 1px solid transparent;
 
     transition:
+        color var(--transition-base),
         background-color var(--transition-base),
         border-color var(--transition-base),
         box-shadow var(--transition-base),
@@ -37,16 +42,26 @@
 
 
 /* ==========================================================================
-   02. CONTAINER
+   02. CONTAINER — GRID
    ========================================================================== */
 
 .site-header__container {
-    min-height: var(--header-height-desktop);
+    display: grid;
 
-    display: flex;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-6);
+
+    gap: clamp(
+        var(--space-6),
+        4vw,
+        var(--space-10)
+    );
+
+    min-height: var(--header-height-desktop);
 
     transition:
         min-height var(--transition-base);
@@ -59,18 +74,23 @@
 
 .site-header.is-scrolled {
     color: var(--color-primary-950);
-    background: rgba(255, 255, 255, 0.92);
 
-    border-bottom-color: rgba(38, 77, 55, 0.1);
+    background:
+        rgba(248, 244, 236, 0.92);
+
+    border-bottom-color:
+        rgba(38, 77, 55, 0.1);
 
     box-shadow:
-        0 0.75rem 2rem rgba(11, 36, 24, 0.08);
+        0 0.75rem 2.5rem
+        rgba(11, 36, 24, 0.09);
 
     backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
 }
 
-.site-header.is-scrolled .site-header__container {
+.site-header.is-scrolled
+.site-header__container {
     min-height: 5rem;
 }
 
@@ -84,29 +104,33 @@
 
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+
+    width: 8.5rem;
+    height: 3.75rem;
 
     flex-shrink: 0;
-
-    width: 10rem;
-    min-width: 10rem;
-
-    transition:
-        transform var(--transition-base);
 }
 
-.site-logo:hover,
-.site-logo:focus-visible {
-    transform: scale(1.025);
-}
+
+/* ==========================================================================
+   05. IMAGENS DO LOGÓTIPO
+   ========================================================================== */
 
 .site-logo__image {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
     display: block;
 
     width: 100%;
     height: auto;
+    max-height: 5rem;
 
     object-fit: contain;
+    object-position: left center;
+
+    transform: translateY(-50%);
 
     transition:
         opacity var(--transition-base),
@@ -115,33 +139,46 @@
 }
 
 
-/* ==========================================================================
-   05. VARIAÇÕES DO LOGÓTIPO
-   ========================================================================== */
+/* Logo verde inicialmente escondido */
 
 .site-logo__image--primary {
     opacity: 0;
     visibility: hidden;
 }
 
+
+/* Logo claro inicialmente visível */
+
 .site-logo__image--light {
-    position: absolute;
-    inset: 0;
+    opacity: 1;
+    visibility: visible;
+}
 
+
+/* Depois do scroll */
+
+.site-header.is-scrolled
+.site-logo__image--primary {
     opacity: 1;
     visibility: visible;
 }
 
 .site-header.is-scrolled
-    .site-logo__image--primary {
-    opacity: 1;
-    visibility: visible;
-}
-
-.site-header.is-scrolled
-    .site-logo__image--light {
+.site-logo__image--light {
     opacity: 0;
     visibility: hidden;
+}
+
+
+/* Hover */
+
+.site-logo:hover
+.site-logo__image,
+.site-logo:focus-visible
+.site-logo__image {
+    transform:
+        translateY(-50%)
+        scale(1.025);
 }
 
 
@@ -152,53 +189,120 @@
 .site-header__actions {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+
     gap: var(--space-3);
+
+    height: 100%;
 
     flex-shrink: 0;
 }
 
-
 /* ==========================================================================
-   07. BOTÃO DO CABEÇALHO
+   07. BOTÃO PRINCIPAL
    ========================================================================== */
 
-.site-header .button--header {
+.site-header .button--header,
+.site-header .button--header:link,
+.site-header .button--header:visited {
+    min-height: 3rem;
+    padding-inline: var(--space-5);
+
     color: var(--color-primary-950);
+
     background: var(--color-accent-500);
 
-    border-color: var(--color-accent-500);
+    border: 1px solid var(--color-accent-500);
+    border-radius: var(--radius-pill);
 
     box-shadow:
-        0 0.5rem 1.25rem rgba(189, 229, 19, 0.18);
+        0 0.75rem 1.8rem
+        rgba(189, 229, 19, 0.17);
+
+    font-size: var(--font-size-200);
+    font-weight: var(--font-weight-bold);
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        transform var(--transition-base),
+        box-shadow var(--transition-base);
 }
+
+
+/* Garante que elementos internos herdam a cor */
+
+.site-header .button--header span,
+.site-header .button--header svg {
+    color: inherit;
+}
+
+.site-header .button--header svg {
+    stroke: currentColor;
+}
+
+
+/* Hover no header transparente */
 
 .site-header .button--header:hover,
 .site-header .button--header:focus-visible {
     color: var(--color-primary-950);
-    background: var(--color-white);
 
+    background: var(--color-white);
     border-color: var(--color-white);
+
+    transform: translateY(-0.12rem);
+
+    box-shadow:
+        0 1rem 2.2rem
+        rgba(0, 0, 0, 0.15);
 }
 
-.site-header.is-scrolled
-    .button--header {
-    color: var(--color-white);
-    background: var(--color-primary-700);
 
+/* ==========================================================================
+   BOTÃO — HEADER COM SCROLL / PÁGINAS INTERNAS
+   ========================================================================== */
+
+.site-header.is-scrolled .button--header,
+.site-header.is-scrolled .button--header:link,
+.site-header.is-scrolled .button--header:visited,
+
+.site-header.site-header--light .button--header,
+.site-header.site-header--light .button--header:link,
+.site-header.site-header--light .button--header:visited,
+
+.site-header.site-header--static .button--header,
+.site-header.site-header--static .button--header:link,
+.site-header.site-header--static .button--header:visited {
+    color: var(--color-white);
+
+    background: var(--color-primary-700);
     border-color: var(--color-primary-700);
 
     box-shadow:
-        0 0.5rem 1.25rem rgba(38, 77, 55, 0.16);
+        0 0.75rem 1.8rem
+        rgba(38, 77, 55, 0.18);
 }
 
-.site-header.is-scrolled
-    .button--header:hover,
-.site-header.is-scrolled
-    .button--header:focus-visible {
-    background: var(--color-primary-900);
-    border-color: var(--color-primary-900);
-}
 
+/* Hover nas páginas internas */
+
+.site-header.is-scrolled .button--header:hover,
+.site-header.is-scrolled .button--header:focus-visible,
+
+.site-header.site-header--light .button--header:hover,
+.site-header.site-header--light .button--header:focus-visible,
+
+.site-header.site-header--static .button--header:hover,
+.site-header.site-header--static .button--header:focus-visible {
+    color: var(--color-primary-950);
+
+    background: var(--color-accent-500);
+    border-color: var(--color-accent-500);
+}
 
 /* ==========================================================================
    08. MENU TOGGLE
@@ -208,18 +312,27 @@
     position: relative;
 
     display: none;
-    align-items: center;
-    justify-content: center;
 
     width: 3rem;
     height: 3rem;
+
+    flex: 0 0 3rem;
+
     padding: 0;
 
+    justify-self: end;
+    align-self: center;
+
     color: var(--color-white);
+
     background: rgba(255, 255, 255, 0.08);
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 50%;
+
+    cursor: pointer;
+
+    overflow: hidden;
 
     transition:
         color var(--transition-base),
@@ -231,129 +344,140 @@
 .menu-toggle:hover,
 .menu-toggle:focus-visible {
     color: var(--color-primary-950);
-    background: var(--color-accent-500);
 
+    background: var(--color-accent-500);
     border-color: var(--color-accent-500);
 
-    transform: scale(1.035);
+    transform: scale(1.04);
 }
 
-.site-header.is-scrolled .menu-toggle {
-    color: var(--color-primary-900);
-    background: var(--color-white);
 
-    border-color: rgba(38, 77, 55, 0.16);
-}
+/* Depois do scroll */
 
-.site-header.is-scrolled
-    .menu-toggle:hover,
-.site-header.is-scrolled
-    .menu-toggle:focus-visible {
+.site-header.is-scrolled .menu-toggle,
+.site-header--light .menu-toggle,
+.site-header--static .menu-toggle {
     color: var(--color-primary-950);
-    background: var(--color-accent-500);
 
-    border-color: var(--color-accent-500);
+    background: rgba(38, 77, 55, 0.06);
+
+    border-color: rgba(38, 77, 55, 0.14);
+}
+
+/* Estado após scroll */
+
+.site-header.is-scrolled
+.menu-toggle {
+    color: var(--color-primary-950);
+
+    background:
+        rgba(38, 77, 55, 0.06);
+
+    border-color:
+        rgba(38, 77, 55, 0.14);
 }
 
 
 /* ==========================================================================
    09. LINHAS DO MENU TOGGLE
    ========================================================================== */
-
 .menu-toggle__line {
     position: absolute;
 
-    width: 1.2rem;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 1.25rem;
     height: 0.125rem;
 
     background: currentColor;
 
     border-radius: var(--radius-pill);
 
+    transform-origin: center;
+
     transition:
         transform var(--transition-base),
-        opacity var(--transition-base),
-        top var(--transition-base);
+        opacity var(--transition-base);
 }
+
+
+/* Linha superior */
 
 .menu-toggle__line:nth-child(1) {
-    top: 0.95rem;
+    transform:
+        translate(-50%, -50%)
+        translateY(-0.38rem);
 }
+
+
+/* Linha central */
 
 .menu-toggle__line:nth-child(2) {
-    top: 1.42rem;
+    transform:
+        translate(-50%, -50%);
 }
+
+
+/* Linha inferior */
 
 .menu-toggle__line:nth-child(3) {
-    top: 1.89rem;
+    transform:
+        translate(-50%, -50%)
+        translateY(0.38rem);
 }
-
 
 /* ==========================================================================
-   10. MENU TOGGLE ABERTO
-   ========================================================================== */
-
-.menu-toggle[aria-expanded="true"]
-    .menu-toggle__line:nth-child(1) {
-    top: 1.42rem;
-
-    transform: rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"]
-    .menu-toggle__line:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"]
-    .menu-toggle__line:nth-child(3) {
-    top: 1.42rem;
-
-    transform: rotate(-45deg);
-}
-
-
-/* ==========================================================================
-   11. CABEÇALHO SOBRE FUNDO CLARO
-   Usar class="site-header site-header--light"
+   10. HEADER SOBRE FUNDO CLARO
    ========================================================================== */
 
 .site-header--light {
     color: var(--color-primary-950);
-    background: rgba(255, 255, 255, 0.96);
 
-    border-bottom-color: rgba(38, 77, 55, 0.1);
+    background:
+        rgba(248, 244, 236, 0.96);
+
+    border-bottom-color:
+        rgba(38, 77, 55, 0.1);
 
     box-shadow:
-        0 0.75rem 2rem rgba(11, 36, 24, 0.06);
+        0 0.75rem 2rem
+        rgba(11, 36, 24, 0.06);
 
     backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
 }
 
+
 .site-header--light
-    .site-logo__image--primary {
+.site-logo__image--primary {
     opacity: 1;
     visibility: visible;
 }
 
 .site-header--light
-    .site-logo__image--light {
+.site-logo__image--light {
     opacity: 0;
     visibility: hidden;
 }
 
-.site-header--light .menu-toggle {
-    color: var(--color-primary-900);
-    background: var(--color-white);
 
-    border-color: rgba(38, 77, 55, 0.16);
+.site-header--light
+.menu-toggle {
+    color: var(--color-primary-900);
+
+    background:
+        rgba(38, 77, 55, 0.06);
+
+    border-color:
+        rgba(38, 77, 55, 0.14);
 }
 
 
 /* ==========================================================================
-   12. CABEÇALHO ESTÁTICO
-   Usar class="site-header site-header--static"
+   11. HEADER ESTÁTICO
    ========================================================================== */
 
 .site-header--static {
@@ -362,50 +486,69 @@
     color: var(--color-primary-950);
     background: var(--color-white);
 
-    border-bottom-color: rgba(38, 77, 55, 0.1);
+    border-bottom-color:
+        rgba(38, 77, 55, 0.1);
 
     box-shadow:
-        0 0.5rem 1.5rem rgba(11, 36, 24, 0.05);
+        0 0.5rem 1.5rem
+        rgba(11, 36, 24, 0.05);
 }
 
+
 .site-header--static
-    .site-logo__image--primary {
+.site-logo__image--primary {
     opacity: 1;
     visibility: visible;
 }
 
 .site-header--static
-    .site-logo__image--light {
+.site-logo__image--light {
     opacity: 0;
     visibility: hidden;
 }
 
 
 /* ==========================================================================
-   13. TABLET
+   12. LAPTOP
    ========================================================================== */
 
 @media (max-width: 75rem) {
+
     .site-header__container {
         min-height: var(--header-height-tablet);
-    }
 
-    .site-header.is-scrolled
-        .site-header__container {
-        min-height: 4.75rem;
+        gap: var(--space-6);
     }
 
     .site-logo {
         width: 8.75rem;
-        min-width: 8.75rem;
     }
 
-    .site-header .button--header {
-        display: none;
+    .button--header {
+        padding-inline: var(--space-4);
+    }
+}
+
+
+/* ==========================================================================
+   13. TABLET — MENU MOBILE
+   ========================================================================== */
+
+@media (max-width: 62rem) {
+
+    .site-header__container {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr)
+            auto;
+    }
+
+    .site-header__actions {
+        grid-column: 3;
     }
 
     .menu-toggle {
-        display: inline-flex;
+        display: block;
     }
 }
 
@@ -415,47 +558,25 @@
    ========================================================================== */
 
 @media (max-width: 48rem) {
+
     .site-header__container {
         min-height: var(--header-height-mobile);
+
         gap: var(--space-4);
     }
 
     .site-header.is-scrolled
-        .site-header__container {
+    .site-header__container {
         min-height: var(--header-height-mobile);
     }
 
     .site-logo {
-        width: 7.5rem;
-        min-width: 7.5rem;
+        width: 8rem;
+        height: 3.5rem;
     }
 
-    .menu-toggle {
-        width: 2.8rem;
-        height: 2.8rem;
-    }
-
-    .menu-toggle__line {
-        width: 1.1rem;
-    }
-
-    .menu-toggle__line:nth-child(1) {
-        top: 0.88rem;
-    }
-
-    .menu-toggle__line:nth-child(2) {
-        top: 1.33rem;
-    }
-
-    .menu-toggle__line:nth-child(3) {
-        top: 1.78rem;
-    }
-
-    .menu-toggle[aria-expanded="true"]
-        .menu-toggle__line:nth-child(1),
-    .menu-toggle[aria-expanded="true"]
-        .menu-toggle__line:nth-child(3) {
-        top: 1.33rem;
+    .button--header {
+        display: none;
     }
 }
 
@@ -464,35 +585,55 @@
    15. MOBILE PEQUENO
    ========================================================================== */
 
-@media (max-width: 25rem) {
+@media (max-width: 36rem) {
+
     .site-logo {
-        width: 6.75rem;
-        min-width: 6.75rem;
+        width: 7.5rem;
     }
 
     .menu-toggle {
-        width: 2.65rem;
-        height: 2.65rem;
+        width: 2.75rem;
+        height: 2.75rem;
     }
 }
 
 
 /* ==========================================================================
-   16. MOVIMENTO REDUZIDO
+   16. DISPOSITIVOS SEM HOVER
+   ========================================================================== */
+
+@media (hover: none) {
+
+    .site-logo:hover
+    .site-logo__image,
+    .button--header:hover,
+    .menu-toggle:hover {
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   17. MOVIMENTO REDUZIDO
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .site-header,
     .site-header__container,
-    .site-logo,
     .site-logo__image,
+    .button--header,
     .menu-toggle,
     .menu-toggle__line {
         transition: none;
     }
 
-    .site-logo:hover,
-    .menu-toggle:hover {
+    .site-logo:hover
+    .site-logo__image,
+    .button--header:hover,
+    .button--header:focus-visible,
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
         transform: none;
     }
 }
