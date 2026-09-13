@@ -149,7 +149,11 @@
     align-items: center;
 
     min-height: clamp(47.5rem, 100vh, 61.25rem);
-    padding-top: var(--header-height-desktop);
+    padding-top:
+    calc(
+        var(--header-height-desktop)
+        + var(--space-6)
+    );
     padding-bottom: var(--space-10);
 
     overflow: hidden;
@@ -303,6 +307,7 @@
         100% - (var(--container-padding-desktop) * 2),
         var(--container-max-width)
     );
+    margin-inline: auto;
 }
 
 
@@ -365,22 +370,21 @@
     background: var(--color-accent-600);
 }
 
-
 /* ==========================================================================
    08. TÍTULO
    ========================================================================== */
 
 .home-hero__title {
-    max-width: 13ch;
+    max-width: 16ch;
     margin: 0;
 
     color: var(--color-primary-950);
 
     font-family: var(--font-family-heading);
     font-size: clamp(
-        3.25rem,
-        5.3vw,
-        4.75rem
+        3.15rem,
+        4.8vw,
+        4.35rem
     );
     font-weight: var(--font-weight-extrabold);
     line-height: 0.98;
@@ -426,10 +430,10 @@
     );
     line-height: var(--line-height-readable);
 
-    text-align: justify;
+    text-align: left;
     text-wrap: pretty;
 
-    hyphens: auto;
+    hyphens: none;
 }
 
 
@@ -443,7 +447,7 @@
     align-items: center;
     gap: var(--space-4);
 
-    margin-top: var(--space-8);
+    margin-top: var(--space-6);
 }
 
 .home-hero__actions .button {
@@ -1642,9 +1646,11 @@
    ========================================================================== */
 
 .home-about {
-    position: relative;
+     position: relative;
 
     overflow: hidden;
+
+    padding-block: var(--space-11);
 
     background:
         radial-gradient(
@@ -1861,13 +1867,14 @@
 }
 
 .home-about__text p {
+    margin: 0;
     color: var(--color-text-muted);
 
     line-height: var(--line-height-readable);
 
-    text-align: justify;
+    text-align: left;
     text-wrap: pretty;
-    hyphens: auto;
+    hyphens: none;
 }
 
 
@@ -1879,7 +1886,7 @@
     display: grid;
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
-    gap: var(--space-5);
+    gap: var(--space-4);
 
     width: 100%;
     margin-top: var(--space-8);
@@ -1893,9 +1900,16 @@
     min-width: 0;
     padding: var(--space-5);
 
-    background: var(--color-surface-soft);
+   background:
+    linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(248, 244, 236, 0.72)
+    );
 
-    border: var(--border-default);
+    border:
+    1px solid
+    rgba(38, 77, 55, 0.10);
     border-radius: var(--radius-lg);
 
     transition:
@@ -1926,7 +1940,8 @@
     flex-shrink: 0;
 
     color: var(--color-primary-900);
-    background: var(--color-accent-500);
+    background: rgba(189, 229, 19, 0.28);
+    border: 1px solid rgba(38, 77, 55, 0.10);
 
     border-radius: 50%;
 }
@@ -2156,6 +2171,8 @@
     overflow: hidden;
 
     color: var(--color-white);
+    padding-block: var(--space-11);
+
     background:
         radial-gradient(
             circle at 92% 8%,
@@ -2253,7 +2270,7 @@
     flex-direction: column;
 
     min-width: 0;
-    min-height: 31rem;
+    min-height: 27rem;
     padding: var(--space-7);
 
     overflow: hidden;
@@ -2372,7 +2389,7 @@
     justify-content: space-between;
     gap: var(--space-4);
 
-    margin-bottom: var(--space-10);
+    margin-bottom: var(--space-8);
 }
 
 .home-services__number {
@@ -2393,18 +2410,26 @@
 
     flex-shrink: 0;
 
-    color: var(--color-primary-950);
-    background: var(--color-accent-500);
+    color: var(--color-accent-500);
+
+    background:
+        rgba(189, 229, 19, 0.12);
+
+    border:
+        1px solid
+        rgba(189, 229, 19, 0.24);
 
     border-radius: 50%;
 
     box-shadow:
-        0 0.85rem 1.75rem
-        rgba(189, 229, 19, 0.2);
+        0 0.75rem 1.5rem
+        rgba(0, 0, 0, 0.12);
 
     transition:
         transform var(--transition-base),
         background-color var(--transition-base),
+        border-color var(--transition-base),
+        color var(--transition-base),
         box-shadow var(--transition-base);
 }
 
@@ -2419,15 +2444,17 @@
 .home-services__icon,
 .home-services__card:focus-within
 .home-services__icon {
-    transform:
+     transform:
         rotate(4deg)
         scale(1.05);
 
-    background: var(--color-white);
+    color: var(--color-primary-950);
+    background: var(--color-accent-500);
+    border-color: var(--color-accent-500);
 
     box-shadow:
         0 1rem 2rem
-        rgba(255, 255, 255, 0.12);
+        rgba(189, 229, 19, 0.16);
 }
 
 
@@ -2466,9 +2493,9 @@
     font-size: var(--font-size-300);
     line-height: var(--line-height-readable);
 
-    text-align: justify;
+    text-align: left;
     text-wrap: pretty;
-    hyphens: auto;
+    hyphens: none;
 }
 
 
@@ -2554,38 +2581,6 @@
     transform: scaleX(1);
 }
 
-
-/* ==========================================================================
-   RODAPÉ DA SECÇÃO
-   ========================================================================== */
-
-.home-services__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-7);
-
-    margin-top: var(--space-10);
-    padding-top: var(--space-8);
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.12);
-}
-
-.home-services__footer p {
-    max-width: 42rem;
-
-    color: rgba(255, 255, 255, 0.7);
-
-    font-size: var(--font-size-500);
-    line-height: var(--line-height-relaxed);
-
-    text-align: left;
-    hyphens: none;
-}
-
-
 /* ==========================================================================
    LAPTOP E TABLET GRANDE
    ========================================================================== */
@@ -2621,13 +2616,6 @@
         margin-top: var(--space-8);
     }
 
-    .home-services__footer {
-        align-items: flex-start;
-    }
-
-    .home-services__footer p {
-        font-size: var(--font-size-400);
-    }
 }
 
 
@@ -2660,16 +2648,6 @@
         hyphens: none;
     }
 
-    .home-services__footer {
-        flex-direction: column;
-        align-items: stretch;
-
-        margin-top: var(--space-8);
-    }
-
-    .home-services__footer .button {
-        width: 100%;
-    }
 }
 
 
@@ -4407,7 +4385,7 @@
    TABLET
    ========================================================================== */
 
-@media (max-width:992px){
+@media (max-width: 62px){
 
 .home-cta__box{
 
@@ -4434,7 +4412,7 @@ left:1rem;
    MOBILE
    ========================================================================== */
 
-@media (max-width:768px){
+@media (max-width: 48px){
 
 .home-cta__box{
 
@@ -4499,7 +4477,7 @@ width:100%;
    MOBILE PEQUENO
    ========================================================================== */
 
-@media (max-width:576px){
+@media (max-width: 36rem){
 
 .home-cta__visual{
 
