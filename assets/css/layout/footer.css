@@ -35,12 +35,6 @@
     margin: 0;
 }
 
-.site-footer > .container {
-    width: min(100% - 48px, 1240px);
-    margin-inline: auto;
-}
-
-
 /* ==========================================================================
    ÁREA SUPERIOR
    ========================================================================== */
@@ -52,11 +46,10 @@
         repeat(3, minmax(150px, 0.7fr));
     gap: clamp(48px, 6vw, 96px);
 
-    padding-block: 96px 82px;
+    padding-block: var(--space-10);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
-
 
 /* ==========================================================================
    MARCA
@@ -239,7 +232,7 @@
     align-items: center;
     gap: clamp(48px, 7vw, 120px);
 
-    padding-block: 64px;
+    padding-block: var(--space-9);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -364,7 +357,7 @@
     align-items: center;
     gap: 32px;
 
-    padding-block: 28px;
+    padding-block: var(--space-5);
 }
 
 .site-footer__bottom > p {

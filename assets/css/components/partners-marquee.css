@@ -6,10 +6,12 @@
     position: relative;
     overflow: hidden;
 
+    padding-block: var(--space-11);
+
     background:
         radial-gradient(
             circle at 90% 12%,
-            rgba(30, 92, 47, 0.473),
+            rgba(38, 77, 55, 0.14),
             transparent 28%
         ),
         var(--color-white);
@@ -25,7 +27,7 @@
 }
 
 .partners__title {
-    max-width: 14ch;
+    max-width: 16ch;
 }
 
 
@@ -43,7 +45,7 @@
 }
 
 
-/* Sombras laterais */
+/* Fade lateral */
 
 .partners-marquee::before,
 .partners-marquee::after {
@@ -52,9 +54,9 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    z-index: 4;
+    z-index: 5;
 
-    width: clamp(2rem, 7vw, 7rem);
+    width: clamp(2rem, 6vw, 6rem);
 
     pointer-events: none;
 }
@@ -65,7 +67,7 @@
     background:
         linear-gradient(
             to right,
-            var(--color-white),
+            var(--color-white) 15%,
             transparent
         );
 }
@@ -76,7 +78,7 @@
     background:
         linear-gradient(
             to left,
-            var(--color-white),
+            var(--color-white) 15%,
             transparent
         );
 }
@@ -88,13 +90,13 @@
 
 .partners-marquee__track {
     display: flex;
-    align-items: stretch;
+    align-items: center;
 
     width: max-content;
 
     animation:
         partnersMarqueeMove
-        30s
+        32s
         linear
         infinite;
 
@@ -102,9 +104,10 @@
 }
 
 
-/* Pausa no hover */
+/* Pausar no hover */
 
 @media (hover: hover) and (pointer: fine) {
+
     .partners-marquee:hover
     .partners-marquee__track {
         animation-play-state: paused;
@@ -119,14 +122,13 @@
 .partners-marquee__group {
     display: flex;
     align-items: center;
+
     gap: var(--space-5);
 
     flex-shrink: 0;
 
     margin: 0;
-    padding:
-        0
-        var(--space-5);
+    padding-inline: var(--space-5);
 
     list-style: none;
 }
@@ -140,17 +142,20 @@
     display: grid;
     place-items: center;
 
-    width: clamp(13rem, 18vw, 16rem);
-    height: 9rem;
-    padding: var(--space-5);
+    width: clamp(12.5rem, 17vw, 15rem);
+    height: 8rem;
+
+    padding: var(--space-4);
 
     flex-shrink: 0;
+
+    overflow: hidden;
 
     background: var(--color-white);
 
     border:
         1px solid
-        rgba(38, 77, 55, 0.12);
+        rgba(38, 77, 55, 0.11);
 
     border-radius: var(--radius-xl);
 
@@ -163,46 +168,133 @@
         background-color var(--transition-base);
 }
 
-.partner-card:hover {
-    transform: translateY(-0.3rem);
 
-    background: var(--color-surface-soft);
+@media (hover: hover) and (pointer: fine) {
 
-    border-color:
-        rgba(189, 229, 19, 0.55);
+    .partner-card:hover {
+        transform: translateY(-0.25rem);
 
-    box-shadow: var(--shadow-md);
+        background: var(--color-surface-soft);
+
+        border-color:
+            rgba(189, 229, 19, 0.5);
+
+        box-shadow: var(--shadow-md);
+    }
 }
 
 
 /* ==========================================================================
-   IMAGEM
+   LOGOS — BASE
    ========================================================================== */
 
 .partner-card img {
     display: block;
 
-    width: 100%;
-    max-width: 11.5rem;
-    height: 5.5rem;
+    width: auto;
+    max-width: 82%;
+
+    height: auto;
+    max-height: 4.8rem;
 
     object-fit: contain;
     object-position: center;
 
+    filter: none;
+
     opacity: 1;
 
-    filter:
-        none;
-
     transform: scale(1);
+
+    transform-origin: center;
 
     transition:
         transform var(--transition-base),
         opacity var(--transition-base);
 }
 
-.partner-card:hover img {
-    transform: scale(1.06);
+
+/* ==========================================================================
+   AJUSTE INDIVIDUAL DAS LOGOS
+   ========================================================================== */
+
+/* Novagest */
+
+.partner-card img[src*="Novagest"] {
+    transform: scale(1.15);
+}
+
+
+/* BVB */
+
+.partner-card img[src*="BVB-Transportes"] {
+    transform: scale(1.6);
+}
+
+
+/* Pellegrini */
+
+.partner-card img[src*="Pellegrini"] {
+    transform: scale(1.65);
+}
+
+
+/* Starone */
+
+.partner-card img[src*="Starone"] {
+    transform: scale(1.55);
+}
+
+
+/* Imporquímica */
+
+.partner-card img[src*="Imporquimica"] {
+    transform: scale(1.4);
+}
+
+
+/* Newrest */
+
+.partner-card img[src*="newrest"] {
+    transform: scale(1.5);
+}
+
+
+/* ==========================================================================
+   HOVER DAS LOGOS
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .partner-card:hover
+    img[src*="Novagest"] {
+        transform: scale(1.2);
+    }
+
+    .partner-card:hover
+    img[src*="BVB-Transportes"] {
+        transform: scale(1.42);
+    }
+
+    .partner-card:hover
+    img[src*="Pellegrini"] {
+        transform: scale(1.72);
+    }
+
+    .partner-card:hover
+    img[src*="Starone"] {
+        transform: scale(1.62);
+    }
+
+    .partner-card:hover
+    img[src*="Imporquimica"] {
+        transform: scale(1.32);
+    }
+
+    .partner-card:hover
+    img[src*="newrest"] {
+        transform: scale(1.42);
+    }
 }
 
 
@@ -211,6 +303,7 @@
    ========================================================================== */
 
 @keyframes partnersMarqueeMove {
+
     from {
         transform: translateX(0);
     }
@@ -226,18 +319,23 @@
    ========================================================================== */
 
 @media (max-width: 62rem) {
+
+    .partners {
+        padding-block: var(--space-10);
+    }
+
     .partners-marquee__track {
-        animation-duration: 26s;
+        animation-duration: 28s;
     }
 
     .partner-card {
-        width: 13rem;
-        height: 8rem;
+        width: 12.5rem;
+        height: 7.5rem;
     }
 
     .partner-card img {
-        max-width: 10.5rem;
-        height: 4.8rem;
+        max-width: 84%;
+        max-height: 4.5rem;
     }
 }
 
@@ -247,31 +345,40 @@
    ========================================================================== */
 
 @media (max-width: 48rem) {
+
+    .partners {
+        padding-block: var(--space-9);
+    }
+
     .partners__heading {
         margin-bottom: var(--space-6);
     }
 
+    .partners__title {
+        max-width: none;
+    }
+
     .partners-marquee__track {
-        animation-duration: 22s;
+        animation-duration: 24s;
     }
 
     .partners-marquee__group {
         gap: var(--space-4);
-
         padding-inline: var(--space-4);
     }
 
     .partner-card {
-        width: 11.5rem;
-        height: 7rem;
+        width: 11rem;
+        height: 6.75rem;
+
         padding: var(--space-4);
 
         border-radius: var(--radius-lg);
     }
 
     .partner-card img {
-        max-width: 9.5rem;
-        height: 4rem;
+        max-width: 86%;
+        max-height: 4rem;
     }
 
     .partners-marquee::before,
@@ -286,14 +393,19 @@
    ========================================================================== */
 
 @media (max-width: 36rem) {
+
+    .partners {
+        padding-block: var(--space-8);
+    }
+
     .partner-card {
-        width: 10.5rem;
-        height: 6.5rem;
+        width: 10rem;
+        height: 6.25rem;
     }
 
     .partner-card img {
-        max-width: 8.5rem;
-        height: 3.7rem;
+        max-width: 88%;
+        max-height: 3.7rem;
     }
 }
 
@@ -303,6 +415,7 @@
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .partners-marquee__track {
         width: 100%;
 
@@ -325,8 +438,7 @@
         transition: none;
     }
 
-    .partner-card:hover,
-    .partner-card:hover img {
+    .partner-card:hover {
         transform: none;
     }
 }

@@ -561,8 +561,7 @@
 
     .site-header__container {
         min-height: var(--header-height-mobile);
-
-        gap: var(--space-4);
+        gap: var(--space-3);
     }
 
     .site-header.is-scrolled
@@ -571,15 +570,14 @@
     }
 
     .site-logo {
-        width: 8rem;
-        height: 3.5rem;
+        width: 7.5rem;
+        height: 3.25rem;
     }
 
-    .button--header {
-        display: none;
+    .site-header .button--header {
+        display: none !important;
     }
 }
-
 
 /* ==========================================================================
    15. MOBILE PEQUENO
