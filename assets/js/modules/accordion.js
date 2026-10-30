@@ -254,7 +254,7 @@ function handleKeyboardNavigation(
         return;
     }
 
-    let nextIndex = currentIndex;
+    let nextIndex;
 
     switch (event.key) {
 

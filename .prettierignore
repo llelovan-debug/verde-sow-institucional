@@ -1,0 +1,13 @@
+# Dependências e artefactos gerados
+node_modules/
+dist/
+
+# Binários
+*.ico
+*.webp
+
+# Código legado: integrar gradualmente para evitar uma alteração massiva
+# sem impacto funcional na fundação do repositório.
+*.html
+assets/css/
+assets/js/
