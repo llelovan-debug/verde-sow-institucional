@@ -8,7 +8,7 @@ Este documento define o fluxo de trabalho actual do projecto Verde Sow — Web I
 2. Cria uma branch curta para uma única tarefa.
 3. Não alteres o visual nem o comportamento sem aprovação prévia.
 4. Não adiciones dependências sem justificar a necessidade e obter aprovação.
-5. Nunca adicionas credenciais, chaves ou ficheiros `.env` ao Git.
+5. Nunca adiciones credenciais, chaves ou ficheiros `.env` ao Git.
 
 ## Branches
 
